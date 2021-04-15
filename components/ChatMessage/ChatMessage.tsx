@@ -1,4 +1,5 @@
 import * as React from 'react'
+import styles from './ChatMessage.module.sass'
 
 export declare interface IPropsChatMessage {
   username: string;
@@ -8,7 +9,7 @@ export declare interface IPropsChatMessage {
 
 export const ChatMessage : React.FC<IPropsChatMessage> = (props) => {
   return (
-    <div>
+    <div className={styles.ChatMessage}>
       <div>{props.username}</div>
       <div>{props.time}</div>
       <div>{props.content}</div>

@@ -1,0 +1,26 @@
+$chat-input-height: 1rem
+
+@mixin chat-input-field
+  background-color: white
+  color: black
+
+
+.ChatInput
+
+  display: block
+  flex-direction: row
+  height: $chat-input-height 
+
+  .inputText
+    @include chat-input-field
+  
+  .sendButton
+    @include chat-input-field
+    background-color: black 
+    color: white
+
+  .sendButton_disabled
+    @extend .sendButton
+    background-color: gray
+ 
+
