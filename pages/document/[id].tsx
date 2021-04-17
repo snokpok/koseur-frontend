@@ -8,7 +8,7 @@ interface DocumentPageProps {
 }
 
 export default function DocumentPage({ data }: DocumentPageProps): JSX.Element {
-  return <Doc />;
+  return <Doc {...data}/>;
 }
 
 export function getServerSideProps(): GetServerSidePropsResult<DocumentPageProps> {
