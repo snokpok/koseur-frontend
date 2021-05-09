@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
 import { Formik, Field, Form, FormikProps, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import devConfigs from "../../configs/api";
 import { useRouter } from "next/router";
 import styles from "./RegistrationForm.module.sass";
@@ -12,8 +12,11 @@ const { api } = devConfigs;
 
 export interface RegistrationFormProps {}
 
-export interface IRegistrationFormResponse extends ILoginFormResponse {
-    passwordVerify: string;
+export interface IRegistrationFormResponse {
+    username: string;
+    email: string;
+    password: string;
+    password_verify: string;
 }
 
 export function RegistrationForm(
@@ -27,18 +30,17 @@ export function RegistrationForm(
             .email("Not a valid email!")
             .required("Please enter your email"),
         password: Yup.string().required("Please enter your password"),
-        passwordVerify: Yup.string().required("Please re-enter your password"),
+        password_verify: Yup.string().required("Please re-enter your password"),
     });
 
     function validate(values: IRegistrationFormResponse) {
         const errors = {};
         if (
-            values.passwordVerify &&
-            values.passwordVerify !== values.password
+            values.password_verify &&
+            values.password_verify !== values.password
         ) {
             Object.assign(errors, {
-                PasswordsNotEqual:
-                    "Passwords are not identical",
+                PasswordsNotEqual: "Passwords are not identical",
             });
         }
         return errors;
@@ -54,31 +56,30 @@ export function RegistrationForm(
                     username: "",
                     email: "",
                     password: "",
-                    passwordVerify: "",
+                    password_verify: "",
                 }}
                 validationSchema={RegistrationSchema}
                 validate={validate}
-                onSubmit={(values: IRegistrationFormResponse, _) => {
-                    setTimeout(async () => {
-                        // const response = await axios({
-                        //     method: "post",
-                        //     url: `${api}/auth/register`,
-                        //     data: {
-                        //         ...values,
-                        //     },
-                        // });
-                        const response = { status: 409 };
+                onSubmit={async (values: IRegistrationFormResponse, _) => {
+                    let response = await axios({
+                        method: "post",
+                        url: `${api}/auth/register`,
+                        data: {
+                            ...values,
+                        },
+                        validateStatus: (status) => status < 500,
+                    });
 
-                        switch (response.status) {
-                            case 200:
-                                router.push("/document");
-                            case 400:
-                                router.push("/register");
-                            case 409:
-                                router.push("/login");
-                                accountExists = true;
-                        }
-                    }, 2000);
+                    console.log(response);
+                    switch (response.status) {
+                        case 200:
+                            router.push("/document");
+                        case 400:
+                            router.push("/register");
+                        case 409:
+                            router.push("/login");
+                            accountExists = true;
+                    }
                 }}
             >
                 {({ errors }: FormikProps<any>) => (
@@ -92,7 +93,7 @@ export function RegistrationForm(
                         />
                         <Field
                             type="password"
-                            name="passwordVerify"
+                            name="password_verify"
                             placeholder="Re-enter password"
                         />
                         {Object.keys(errors).map((errMsgKey) => (
