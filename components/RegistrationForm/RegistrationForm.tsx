@@ -1,16 +1,11 @@
 import React, { ReactElement, useEffect } from "react";
-import { Formik, Field, Form, FormikProps, ErrorMessage } from "formik";
+import { Formik, Field, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import axios, { AxiosResponse } from "axios";
-import devConfigs from "../../configs/api";
 import { useRouter } from "next/router";
 import styles from "./RegistrationForm.module.sass";
-import { ILoginFormResponse } from "../LoginForm/LoginForm";
 
 export let accountExists = false;
-const { api } = devConfigs;
-
-export interface RegistrationFormProps {}
 
 export interface IRegistrationFormResponse {
     username: string;
@@ -20,7 +15,6 @@ export interface IRegistrationFormResponse {
 }
 
 export function RegistrationForm(
-    props: RegistrationFormProps
 ): ReactElement | null {
     const router = useRouter();
 
@@ -40,7 +34,7 @@ export function RegistrationForm(
             values.password_verify !== values.password
         ) {
             Object.assign(errors, {
-                PasswordsNotEqual: "Passwords are not identical",
+                password_verify: "Passwords are not identical",
             });
         }
         return errors;
@@ -63,7 +57,7 @@ export function RegistrationForm(
                 onSubmit={async (values: IRegistrationFormResponse, _) => {
                     let response = await axios({
                         method: "post",
-                        url: `${api}/auth/register`,
+                        url: `${process.env.api}/auth/register`,
                         data: {
                             ...values,
                         },
@@ -82,25 +76,24 @@ export function RegistrationForm(
                     }
                 }}
             >
-                {({ errors }: FormikProps<any>) => (
+                {({ errors, touched }: FormikProps<IRegistrationFormResponse>) => (
                     <Form>
                         <Field name="username" placeholder="Username" />
+                        {touched.username && errors.username && <li>{errors.username}</li>}
                         <Field type="email" name="email" placeholder="Email" />
+                        {touched.email && errors.email && <li>{errors.email}</li>}
                         <Field
                             type="password"
                             name="password"
                             placeholder="Password"
                         />
+                        {touched.password && errors.password && <li>{errors.password}</li>}
                         <Field
                             type="password"
                             name="password_verify"
                             placeholder="Re-enter password"
                         />
-                        {Object.keys(errors).map((errMsgKey) => (
-                            <li key={errMsgKey} className={styles.formError}>
-                                {errors[errMsgKey]}
-                            </li>
-                        ))}
+                        {touched.password_verify && errors.password_verify && <li>{errors.password_verify}</li>}
                         <button type="submit">Register</button>
                     </Form>
                 )}

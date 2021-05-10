@@ -1,39 +1,41 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { Formik, Field, Form, FormikProps, ErrorMessage } from "formik";
+import {
+    Formik,
+    Field,
+    Form,
+    FormikProps,
+} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import devConfigs from "../../configs/api";
 import { useRouter } from "next/router";
 import styles from "./LoginForm.module.sass";
 import { accountExists } from "../RegistrationForm/RegistrationForm";
-
-const { api } = devConfigs;
-
-export interface LoginFormProps {}
 
 export interface ILoginFormResponse {
     username_or_email: string;
     password: string;
 }
 
-export function LoginForm(props: LoginFormProps): ReactElement | null {
+const formFieldsMetadata = {
+    username_or_email: {
+        required_message: "Please enter your username or email",
+        placeholder: "Username or email",
+    },
+    password: {
+        required_message: "Please enter your password",
+        placeholder: "Password",
+    },
+};
+
+export function LoginForm(): ReactElement | null {
     const [flashMessage, setFlashMessage] = useState<string>("");
+    const [extraErrors, setExtraErrors] = useState<{invalidEmail: string}>({invalidEmail: ""})
 
     const router = useRouter();
     const LoginSchema = Yup.object().shape({
-        username_or_email: Yup.string(),
-        password: Yup.string().required("Please enter your password"),
+        username_or_email: Yup.string().required(formFieldsMetadata.username_or_email.required_message),
+        password: Yup.string().required(formFieldsMetadata.password.required_message),
     });
-
-    function validate(values: ILoginFormResponse) {
-        const errors = {};
-        if (!values.username_or_email) {
-            Object.assign(errors, {
-                EmailUsernameEmailMissing:
-                    "Please provide your email or your username",
-            });
-        }
-    }
 
     useEffect(() => {
         router.prefetch("/document");
@@ -51,40 +53,43 @@ export function LoginForm(props: LoginFormProps): ReactElement | null {
                     password: "",
                 }}
                 validationSchema={LoginSchema}
-                validate={validate}
-                onSubmit={(values: ILoginFormResponse, _) => {
+                onSubmit={(values: ILoginFormResponse) => {
                     setTimeout(async () => {
-                        console.log(values);
                         const response = await axios({
                             method: "post",
-                            url: `${api}/auth/login`,
+                            url: `${process.env.api}/auth/login`,
                             data: {
                                 ...values,
                             },
+                            withCredentials: true,
+                            validateStatus: (status) => status < 500,
                         });
-
-                        if (response.status === 200) router.push("/document");
-                        if (response.status === 400) router.push("/login");
-                    }, 2000);
+                        
+                        console.log(response)
+                        switch (response.status) {
+                            case 200:
+                                router.push("/document");
+                            case 404:
+                                setExtraErrors({...extraErrors, invalidEmail: response.data?.detail})                               
+                        }
+                    }, 1000);
                 }}
             >
-                {({ errors }: FormikProps<any>) => (
+                {({ errors, touched }: FormikProps<any>) => (
                     <Form>
-                        <Field
+                        <Field 
                             name="username_or_email"
-                            placeholder="Username or email"
+                            placeholder={formFieldsMetadata.username_or_email.placeholder}
                         />
-                        <Field
-                            type="password"
+                        {touched.username_or_email && errors.username_or_email && <li>{errors.username_or_email}</li>}
+                        <Field 
                             name="password"
-                            placeholder="password"
+                            type="password"
+                            placeholder={formFieldsMetadata.password.placeholder}
                         />
-                        {Object.keys(errors).map((errMsgKey) => (
-                            <li key={errMsgKey} className={styles.loginError}>
-                                {errors[errMsgKey]}
-                            </li>
-                        ))}
+                        {touched.password && errors.password && <li>{errors.password}</li>}
                         <button type="submit">Login</button>
+                        {extraErrors.invalidEmail && <li>{extraErrors.invalidEmail}</li>}
                     </Form>
                 )}
             </Formik>
