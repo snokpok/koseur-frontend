@@ -44,6 +44,7 @@ export function LoginForm(): ReactElement | null {
                 "An account with this username has already been created; please login"
             );
     }, []);
+
     return (
         <div>
             <div>{flashMessage}</div>
