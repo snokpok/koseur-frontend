@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
 import { Formik, Field, Form, FormikProps } from "formik";
 import * as Yup from "yup";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { useRouter } from "next/router";
 import styles from "./RegistrationForm.module.sass";
 
@@ -64,7 +64,6 @@ export function RegistrationForm(
                         validateStatus: (status) => status < 500,
                     });
 
-                    console.log(response);
                     switch (response.status) {
                         case 200:
                             router.push("/document");

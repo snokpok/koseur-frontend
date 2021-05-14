@@ -33,8 +33,19 @@ export function LoginForm(): ReactElement | null {
 
     const router = useRouter();
     const LoginSchema = Yup.object().shape({
-        username_or_email: Yup.string().required(formFieldsMetadata.username_or_email.required_message),
-        password: Yup.string().required(formFieldsMetadata.password.required_message),
+        username_or_email: 
+            Yup
+            .string()
+            .required(
+                formFieldsMetadata
+                    .username_or_email
+                    .required_message
+            ),
+        password: Yup
+            .string()
+            .required(
+                formFieldsMetadata.password.required_message
+            ),
     });
 
     useEffect(() => {
@@ -66,7 +77,6 @@ export function LoginForm(): ReactElement | null {
                             validateStatus: (status) => status < 500,
                         });
                         
-                        console.log(response)
                         switch (response.status) {
                             case 200:
                                 router.push("/document");
