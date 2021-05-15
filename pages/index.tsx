@@ -1,12 +1,20 @@
 import Image from "next/image";
+import FadeInImage from '../components/FadeInImage/FadeInImage'
 import Link from "next/link";
 import styles from "../styles/styles.module.sass";
+import Head from 'next/head'
 
 export default function MainWorkspace() {
     const sideLength = 200;
 
     return (
         <>
+            <Head>
+                <title>Koseur | Home</title>
+                <link
+                    rel="stylesheet"
+                />
+            </Head>
             <div className={styles.bgWrap}>
                 <Image
                     src="/landing_page.jpeg"
@@ -16,15 +24,15 @@ export default function MainWorkspace() {
                 />
             </div>
             <div className={styles.LandingPage}>
-                <Image
-                    src="/koseur_logo.jpg"
+                <FadeInImage
+                    src="/logo.png"
                     width={sideLength}
                     height={sideLength}
                 />
-                <div className={styles.Intro}>Bring me Koseur, baby</div>
+                <div className={styles.Intro}>KOSEUR TOGETHER</div>
                 <div className={styles.HomePageButton}>
                     <Link href="/speakeasy">
-                        <a>Go to home page</a>
+                        <a>Explore</a>
                     </Link>
                 </div>
             </div>
