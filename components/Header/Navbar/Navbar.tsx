@@ -5,7 +5,7 @@ import styles from "./Navbar.module.sass";
 import { slide as Menu } from "react-burger-menu";
 
 export interface NavbarProps {
-    dropdownToggleComponent: React.ReactNode;
+    // dropdownToggleComponent: React.ReactNode;
     dropdownItems: { name: string; route: string }[];
 }
 export interface CustomToggleProps {
