@@ -15,6 +15,6 @@ export default function Header(props: HeaderProps) {
                 <Image src="/koseur_logo.jpg" width={100} height={115}/>
             </div>
             <Navbar dropdownItems={[{ name: "MENU", route: "/menu" }]} />
-        </div>
+        </div>BRING ME KOSEUR
     );
 }

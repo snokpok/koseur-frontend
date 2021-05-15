@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { Component, useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import styles from "./Navbar.module.sass";
-import Hamburger from "hamburger-react";
+import { slide as Menu } from "react-burger-menu";
 
 export interface NavbarProps {
     dropdownToggleComponent: React.ReactNode;
@@ -26,48 +26,19 @@ export default function Navbar(props: NavbarProps) {
         </div>
     );
 
-    const CustomToggle = React.forwardRef(
-        (props: CustomToggleProps, ref: React.ForwardedRef<any>) => (
-            <a
-                ref={ref}
-                onClick={(e) => {
-                    e.preventDefault();
-                    props.onClick(e);
-                    setOpen(!open);
-                }}
-            ></a>
-        )
-    );
-
-    const CustomMenu = React.forwardRef(
-        (
-            { children, style, className },
-            ref: React.LegacyRef<HTMLDivElement>
-        ) => {
-            return (
-                <div ref={ref} style={style} className={className}>
-                    <ul className="list-unstyled">
-                        {React.Children.toArray(children)}
-                    </ul>
-                </div>
-            );
-        }
-    );
-
     const BurgerNavbar = (
         <div className={styles.BurgerNavbar}>
-            <Dropdown>
-                <Hamburger toggled={isOpen} toggle={setOpen} />
-                <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
-
-                <Dropdown.Menu as={CustomMenu}>
-                    {props.dropdownItems.map((item) => (
-                        <Dropdown.Item eventKey={item.name}>
-                            {item.name}
-                        </Dropdown.Item>
-                    ))}
-                </Dropdown.Menu>
-            </Dropdown>
+            <Menu>
+                <a id="home" className="menu-item" href="/">
+                    Home
+                </a>
+                <a id="about" className="menu-item" href="/about">
+                    About
+                </a>
+                <a id="contact" className="menu-item" href="/contact">
+                    Contact
+                </a>
+            </Menu>
         </div>
     );
 
