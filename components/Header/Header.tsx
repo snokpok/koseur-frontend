@@ -12,7 +12,7 @@ export default function Header(props: HeaderProps) {
         <div className={styles.Header}>
             <div className={styles.BarName}>{props.barName}</div>
             <div className={styles.Logo}>
-                <Image src="/koseur_logo.jpg" width={100} height={115}/>
+                <Image src="/logo.png" width={100} height={115}/>
             </div>
             <Navbar dropdownItems={[{ name: "MENU", route: "/menu" }]} />
         </div>
