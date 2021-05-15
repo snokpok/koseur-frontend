@@ -4,23 +4,20 @@ import Image from "next/image";
 import styles from "../../styles/styles.module.sass";
 
 export default function BarPage() {
-    const sideLength = 130;
-
     return (
         <div>
             <div className={styles.bgWrap}>
                 <Image
-                    src="/bar-background2.jpg"
+                    src="/background.jpeg"
                     layout="fill"
                     objectFit="cover"
                     quality={100}
                 />
             </div>
-            <Header logoSideLength={sideLength} barName="SpeakEasy" />
+            <Header barName="KOSEUR" />
             <p className={styles.bgText}>
-                Bring me closer...
+                BRING ME KOSEUR
                 <br />
-                baby
             </p>
         </div>
     );
