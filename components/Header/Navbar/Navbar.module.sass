@@ -1,8 +1,22 @@
-.Navbar
+@mixin NavbarMixin
     width: 10%
-    heigth: 100px
+    height: 100px
+    float: right
+    clear: right
+
+.HorizontalNavbar
+    @include NavbarMixin
     display: flex
     flex-direction: row
     justify-content: space-around
-    float: right
-    clear: right
+
+.BurgerNavbar
+    @include NavbarMixin
+    justify-content: space-around
+    display: none
+
+@media screen and ( max-width: 780px )
+    .HorizontalNavbar
+        display: none
+    .BurgerNavbar
+        display: flex

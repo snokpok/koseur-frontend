@@ -1,6 +1,3 @@
 export default function MainWorkspace() {
-    return (
-        <div>
-        </div>
-    );
+    return <div></div>;
 }

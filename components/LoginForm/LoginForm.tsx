@@ -1,10 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import {
-    Formik,
-    Field,
-    Form,
-    FormikProps,
-} from "formik";
+import { Formik, Field, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -29,23 +24,18 @@ const formFieldsMetadata = {
 
 export function LoginForm(): ReactElement | null {
     const [flashMessage, setFlashMessage] = useState<string>("");
-    const [extraErrors, setExtraErrors] = useState<{invalidEmail: string}>({invalidEmail: ""})
+    const [extraErrors, setExtraErrors] = useState<{ invalidEmail: string }>({
+        invalidEmail: "",
+    });
 
     const router = useRouter();
     const LoginSchema = Yup.object().shape({
-        username_or_email: 
-            Yup
-            .string()
-            .required(
-                formFieldsMetadata
-                    .username_or_email
-                    .required_message
-            ),
-        password: Yup
-            .string()
-            .required(
-                formFieldsMetadata.password.required_message
-            ),
+        username_or_email: Yup.string().required(
+            formFieldsMetadata.username_or_email.required_message
+        ),
+        password: Yup.string().required(
+            formFieldsMetadata.password.required_message
+        ),
     });
 
     useEffect(() => {
@@ -76,31 +66,45 @@ export function LoginForm(): ReactElement | null {
                             withCredentials: true,
                             validateStatus: (status) => status < 500,
                         });
-                        
+
                         switch (response.status) {
                             case 200:
                                 router.push("/document");
                             case 404:
-                                setExtraErrors({...extraErrors, invalidEmail: response.data?.detail})                               
+                                setExtraErrors({
+                                    ...extraErrors,
+                                    invalidEmail: response.data?.detail,
+                                });
                         }
                     }, 1000);
                 }}
             >
                 {({ errors, touched }: FormikProps<any>) => (
                     <Form>
-                        <Field 
+                        <Field
                             name="username_or_email"
-                            placeholder={formFieldsMetadata.username_or_email.placeholder}
+                            placeholder={
+                                formFieldsMetadata.username_or_email.placeholder
+                            }
                         />
-                        {touched.username_or_email && errors.username_or_email && <li>{errors.username_or_email}</li>}
-                        <Field 
+                        {touched.username_or_email &&
+                            errors.username_or_email && (
+                                <li>{errors.username_or_email}</li>
+                            )}
+                        <Field
                             name="password"
                             type="password"
-                            placeholder={formFieldsMetadata.password.placeholder}
+                            placeholder={
+                                formFieldsMetadata.password.placeholder
+                            }
                         />
-                        {touched.password && errors.password && <li>{errors.password}</li>}
+                        {touched.password && errors.password && (
+                            <li>{errors.password}</li>
+                        )}
                         <button type="submit">Login</button>
-                        {extraErrors.invalidEmail && <li>{extraErrors.invalidEmail}</li>}
+                        {extraErrors.invalidEmail && (
+                            <li>{extraErrors.invalidEmail}</li>
+                        )}
                     </Form>
                 )}
             </Formik>

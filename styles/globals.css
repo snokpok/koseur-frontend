@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, 'Satisfy', cursive;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, "Satisfy", cursive;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }

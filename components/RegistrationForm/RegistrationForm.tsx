@@ -14,8 +14,7 @@ export interface IRegistrationFormResponse {
     password_verify: string;
 }
 
-export function RegistrationForm(
-): ReactElement | null {
+export function RegistrationForm(): ReactElement | null {
     const router = useRouter();
 
     const RegistrationSchema = Yup.object().shape({
@@ -75,24 +74,35 @@ export function RegistrationForm(
                     }
                 }}
             >
-                {({ errors, touched }: FormikProps<IRegistrationFormResponse>) => (
+                {({
+                    errors,
+                    touched,
+                }: FormikProps<IRegistrationFormResponse>) => (
                     <Form>
                         <Field name="username" placeholder="Username" />
-                        {touched.username && errors.username && <li>{errors.username}</li>}
+                        {touched.username && errors.username && (
+                            <li>{errors.username}</li>
+                        )}
                         <Field type="email" name="email" placeholder="Email" />
-                        {touched.email && errors.email && <li>{errors.email}</li>}
+                        {touched.email && errors.email && (
+                            <li>{errors.email}</li>
+                        )}
                         <Field
                             type="password"
                             name="password"
                             placeholder="Password"
                         />
-                        {touched.password && errors.password && <li>{errors.password}</li>}
+                        {touched.password && errors.password && (
+                            <li>{errors.password}</li>
+                        )}
                         <Field
                             type="password"
                             name="password_verify"
                             placeholder="Re-enter password"
                         />
-                        {touched.password_verify && errors.password_verify && <li>{errors.password_verify}</li>}
+                        {touched.password_verify && errors.password_verify && (
+                            <li>{errors.password_verify}</li>
+                        )}
                         <button type="submit">Register</button>
                     </Form>
                 )}
