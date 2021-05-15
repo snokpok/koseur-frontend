@@ -5,7 +5,12 @@ html,
 body {
     padding: 0;
     margin: 0;
+<<<<<<< HEAD
     font-family: -apple-system, "Poiret One";
+=======
+    font-family: -apple-system, "Old Standard TT";
+    color: white;
+>>>>>>> landingPage
 }
 
 a {
