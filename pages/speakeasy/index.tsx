@@ -31,7 +31,7 @@ export default function BarPage() {
                         quality={100}
                     />
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }

@@ -1,19 +1,17 @@
 import Image from "next/image";
-import FadeInImage from '../components/FadeInImage/FadeInImage'
+import FadeInImage from "../components/FadeInImage/FadeInImage";
 import Link from "next/link";
 import styles from "../styles/styles.module.sass";
-import Head from 'next/head'
+import Head from "next/head";
 
-export default function MainWorkspace() {
+export default function LandingPage() {
     const sideLength = 200;
 
     return (
         <>
             <Head>
                 <title>Koseur | Home</title>
-                <link
-                    rel="stylesheet"
-                />
+                <link rel="stylesheet" />
             </Head>
             <div className={styles.bgWrap}>
                 <Image
