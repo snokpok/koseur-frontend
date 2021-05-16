@@ -1,0 +1,10 @@
+@use "../../styles/mixins.module" as mixins
+
+.HomePage
+    background-color: #000
+    @include mixins.flex()
+
+    .IntroHomePage
+        @include mixins.fullWidthHeight($vh: 35vh)
+    .CategoriesSection
+        @include mixins.fullWidthHeight

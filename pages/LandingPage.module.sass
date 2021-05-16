@@ -1,22 +1,20 @@
+@use "../styles/variables.module" as globals
+@use "../styles/mixins.module" as mixins
+
 .LandingPage
-    display: flex
-    height: 100vh
+    @include mixins.flex()
+    @include mixins.fullWidthHeight()
     flex-direction: column
-    justify-content: center
-    align-items: center
     .Logo
         margin: 13px 0
-        animation: fadeIn
-        animation-duration: 4s
     .Intro
         font-size: 5rem
         margin-top: 3rem
-
     .HomePageButton
         font-size: 1.5rem
         width: 150px
         text-align: center
-        background-color: #93781f
+        background-color: globals.$koseur-gold
         border-radius: 6px
         margin: 3rem 0
         padding: 1rem
