@@ -46,7 +46,7 @@ export default function BarPage() {
                          </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }
