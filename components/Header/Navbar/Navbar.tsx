@@ -19,7 +19,7 @@ export default function Navbar(props: NavbarProps) {
     const HorizontalNavbar = (
         <div className={styles.HorizontalNavbar}>
             {props.dropdownItems.map((item) => (
-                <Link href={item.route}>
+                <Link href={item.route} key={item.name}>
                     <a>{item.name}</a>
                 </Link>
             ))}
