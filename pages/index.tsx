@@ -16,8 +16,8 @@ export default function MainWorkspace() {
                 />
             </Head>
             <div className={styles.bgWrap}>
-                <Image
-                    src="/landing_page.jpeg"
+                <FadeInImage
+                    src="/landing-page.jpg"
                     layout="fill"
                     objectFit="cover"
                     quality={100}

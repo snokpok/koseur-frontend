@@ -4,7 +4,12 @@
     flex-direction: column
     .ProfileSection
         min-height: 100vh
-
+        width: 100vw
+        
+.ProfileSection_2
+        min-height: 100vh
+        width: 100vw
+        background: black
 
 .bgWrap
     position: absolute
@@ -13,12 +18,33 @@
     overflow: hidden
     z-index: -1
 
+.aboutUs
+    width: 1500px
+    height: 1000px
+    margin-left: auto
+    margin-right: auto
+    margin-top: 200px
+    .about_us_title
+        width: 900px
+        heigth: 500px
+        margin-top: 200px
+        text-align: center
+        font-size: 2em
+        float: right
+        .about_us_text
+            width: 700px
+            margin-left: auto
+            margin-right: auto
+            font-size: 0.7em
+
 .bgText
     margin: 0
     font-size: 4rem
     line-height: 5rem
     text-align: center
     padding-top: 20%
+    animation: fadeIn
+    animation-duration: 3s
 
 .Logo
     position: fixed
@@ -26,6 +52,8 @@
     margin-right: auto
     top: 3%
     left: 46vw
+    animation: fadeIn
+    animation-duration: 3s
 
 .LandingPage
     display: flex
@@ -36,7 +64,7 @@
     .Logo
         margin: 13px 0
         animation: fadeIn
-        animation-duration: 4s
+        animation-duration: 2s
     .Intro
         font-size: 5rem
         margin-top: 3rem
@@ -45,8 +73,13 @@
         font-size: 1.5rem
         width: 150px
         text-align: center
-        background-color: #93781f
-        border-radius: 6px
         margin: 3rem 0
         padding: 1rem
+        border: solid 1px
+        transition-duration: 1s
+    
+    .HomePageButton:hover 
+        background-color: black
+        color: grey
+        transition-duration: 1s
         

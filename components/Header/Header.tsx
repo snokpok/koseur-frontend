@@ -3,6 +3,7 @@ import Navbar from "./Navbar/Navbar";
 import styles from "./Header.module.sass";
 import Image from "next/image";
 import Link from 'next/link'
+import FadeInImage from "../../components/FadeInImage/FadeInImage";
 
 export interface HeaderProps {
     barName: string;
