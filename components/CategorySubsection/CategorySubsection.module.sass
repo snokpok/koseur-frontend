@@ -1,11 +1,11 @@
 @use "../../styles/mixins.module" as mixins
 
 .CategorySubsection
-    @include mixins.flex($direction: column, $align-items: flex-start)
-    margin: 2rem 1rem 2rem 1rem
+    @include mixins.flex($dir: column, $ai: flex-start)
+    margin: 2rem 1rem 
     .Header
         font-size: 3rem
     .Items
-        @include mixins.flex($direction: row, $justify-content: flex-start)
+        @include mixins.flex($dir: row, $jc: flex-start)
         width: 100%
         overflow-x: scroll
