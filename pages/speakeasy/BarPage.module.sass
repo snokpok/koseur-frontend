@@ -1,3 +1,5 @@
+@use '../../styles/mixins.module' as mixins
+
 .ProfileContainer
     display: flex
     flex-direction: column
@@ -5,3 +7,43 @@
         @include mixins.fullWidthHeight()
     .ProfileSectionOther
         @include mixins.fullWidthHeight($vh: 230vh)
+
+.AboutUs
+    width: 1500px
+    margin: 200px auto
+    .AboutUsTitle
+        width: 900px
+        height: 500px
+        margin-top: 200px
+        text-align: center
+        font-size: 2em
+        float: right
+    .AboutUsText
+        width: 700px
+        margin: 0 auto
+        font-size: 0.7em
+
+.BarConcept
+    width: 60%
+    margin: 0 auto
+    font-size: 3em
+    text-align: center
+
+.Drink
+    margin-top: 200px
+    .DrinkTitle
+        width: 900px
+        heigth: 500px
+        margin-top: 200px
+        text-align: center
+        font-size: 2em
+        float: left
+
+.DrinkTemplate
+    width: 1602px
+    margin: 7% auto
+    border: 1px solid white
+    .DrinkTextRight
+        @include mixins.DrinkAlternating(right)
+    .DrinkTextLeft
+        @include mixins.DrinkAlternating(left)

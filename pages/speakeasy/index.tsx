@@ -2,6 +2,7 @@ import React, { Component, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Image from "next/image";
 import styles from "../../styles/styles.module.sass";
+// import anotherStyles from "./BarPage.module.sass"
 import FadeInImage from "../../components/FadeInImage/FadeInImage";
 
 export default function BarPage() {
@@ -17,7 +18,7 @@ export default function BarPage() {
                     />
                 </div>
                 <Header barName="KOSEUR" />
-                <p className={styles.bgText}>
+                <p className={styles.BgText}>
                     BRING ME KOSEUR
                     <br />
                 </p>
