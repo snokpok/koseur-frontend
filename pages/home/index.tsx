@@ -4,8 +4,18 @@ import Head from "next/head";
 import FadeInImage from "../../components/FadeInImage/FadeInImage";
 import CategorySection from "../../components/CategorySection/CategorySection";
 import { dataCategory } from "../../commons/home-page-data";
+import { NextPageContext } from "next";
+import { getBarsHomePage} from "../../commons/graphql/queries";
+import { ICategorySubsection } from "../../components/CategorySubsection/CategorySubsection";
+import { AxiosGenericQueryFunction } from "../../commons/graphql/axios-query.function";
 
-export default function HomePage() {
+export interface HomePageProps {
+    data: {
+        categories: ICategorySubsection[]
+    }
+}
+
+export default function HomePage({data}: HomePageProps) {
     const sideLength = 100;
 
     return (
@@ -21,8 +31,17 @@ export default function HomePage() {
                     height={sideLength}
                 />
                 <div className={styles.IntroHomePage}>Styles</div>
-                <CategorySection data={dataCategory} />
+                <CategorySection data={data?.categories ?? dataCategory} />
             </div>
         </>
     );
+}
+
+HomePage.getInitialProps = async (ctx: NextPageContext) => {
+    try {
+        const res = await AxiosGenericQueryFunction(getBarsHomePage)
+        return res.data
+    } catch {
+        return {data: null}
+    }
 }

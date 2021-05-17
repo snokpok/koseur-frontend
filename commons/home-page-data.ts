@@ -3,45 +3,45 @@ import { ICategorySubsection } from "../components/CategorySubsection/CategorySu
 export const dataCategory: ICategorySubsection[] = [
     {
         name: "Recommended for you",
-        items: [
+        bars: [
             {
-                title: "Speakeasy",
-                brief: "Best place in Ho Chi Minh",
+                name: "Speakeasy",
+                description: "Best place in Ho Chi Minh",
             },
             {
-                title: "Speakeasy",
-                brief: "Best place in Ho Chi Minh",
+                name: "Speakeasy",
+                description: "Best place in Ho Chi Minh",
             },
             {
-                title: "Speakeasy",
-                brief: "Best place in Ho Chi Minh",
+                name: "Speakeasy",
+                description: "Best place in Ho Chi Minh",
             },
         ],
     },
     {
         name: "Popular right now",
-        items: [
+        bars: [
             {
-                title: "Speakeasy",
-                brief: "Best place in Ho Chi Minh",
+                name: "Speakeasy",
+                description: "Best place in Ho Chi Minh",
             },
         ],
     },
     {
         name: "Go here if you want to fuck hot chicks",
-        items: [
+        bars: [
             {
-                title: "Speakeasy",
-                brief: "Best place in Ho Chi Minh",
+                name: "Speakeasy",
+                description: "Best place in Ho Chi Minh",
             },
         ],
     },
     {
         name: "Go here if you want to fuck hot chicks",
-        items: [
+        bars: [
             {
-                title: "Speakeasy",
-                brief: "Best place in Ho Chi Minh",
+                name: "Speakeasy",
+                description: "Best place in Ho Chi Minh",
             },
         ],
     },
