@@ -4,6 +4,7 @@ import CategorySubsection, {
     ICategorySubsection,
 } from "../CategorySubsection/CategorySubsection";
 
+
 export type TCategorySection = ICategorySubsection[];
 
 export default function CategorySection(props: { data: TCategorySection }) {
