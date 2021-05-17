@@ -19,3 +19,17 @@ export const getBarsHomePage =
       }
     }
     `
+
+export function getBarById(id: number) {
+    return `
+    query {
+        bar(id: ${id}) {
+            name
+            description
+            images {
+                formats
+            }
+        }
+    }
+    `
+}

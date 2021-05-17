@@ -4,8 +4,29 @@ import Image from "next/image";
 import styles from "../../styles/styles.module.sass";
 // import anotherStyles from "./BarPage.module.sass"
 import FadeInImage from "../../components/FadeInImage/FadeInImage";
+import { NextPageContext } from "next";
+import { AxiosGenericQueryFunction } from "../../commons/graphql/axios-query.function";
+import { getBarById } from "../../commons/graphql/queries";
+import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
 
-export default function BarPage() {
+export interface BarPageProps {
+    data: {
+        bar: {
+            images: [
+                {
+                    formats: {
+                        large: {
+                            url: string
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+
+export default function BarPage(props: BarPageProps) {
+    console.log(props)
     return (
         <div className={styles.ProfileContainer}>
             <div className={styles.ProfileSection}>
@@ -26,7 +47,11 @@ export default function BarPage() {
 
             <div className={styles.ProfileSectionOther}>
                 <div className={styles.AboutUs}>
-                    <Image src="/bartender.jpg" width={600} height={900} />
+                    <Image 
+                        loader={ImageLoaderFunction}
+                        src={props.data.bar.images[0].formats.large.url} 
+                        width={600} height={900} 
+                    />
 
                     <div className={styles.AboutUsTitle}>
                         <p> Bar & Champagne </p>
@@ -103,4 +128,13 @@ export default function BarPage() {
             </div>
         </div>
     );
+}
+
+BarPage.getInitialProps = async (ctx: NextPageContext) => {
+    try {
+        const res = await AxiosGenericQueryFunction(getBarById(1))
+        return res.data
+    } catch {
+        return {data: null}
+    }
 }
