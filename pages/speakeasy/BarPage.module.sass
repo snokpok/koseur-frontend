@@ -2,4 +2,6 @@
     display: flex
     flex-direction: column
     .ProfileSection
-        min-height: 100vh
+        @include mixins.fullWidthHeight()
+    .ProfileSectionOther
+        @include mixins.fullWidthHeight($vh: 230vh)

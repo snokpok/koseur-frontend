@@ -11,6 +11,8 @@ body {
     margin: 0;
     font-family: -apple-system, "Poiret One";
     color: white;
+    background-color: black;
+    font-size: 18px;
 }
 
 a {

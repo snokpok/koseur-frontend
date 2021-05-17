@@ -13,7 +13,7 @@ export default function LandingPage() {
                 <title>Koseur | Home</title>
                 <link rel="stylesheet" />
             </Head>
-            <div className={styles.bgWrap}>
+            <div className={styles.BgWrap}>
                 <FadeInImage
                     src="/landing-page.jpg"
                     layout="fill"
