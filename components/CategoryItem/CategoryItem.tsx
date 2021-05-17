@@ -8,9 +8,9 @@ export interface ICategoryItem {
 
 export default function CategoryItem(props: ICategoryItem) {
     return (
-        <div className={styles.CategoryItem}>
-            <div>{props.title}</div>
-            <div>{props.brief}</div>
-        </div>
+            <div className={styles.CategoryItem}>
+                <div>{props.title}</div>
+                <div>{props.brief}</div>
+            </div>
     );
 }

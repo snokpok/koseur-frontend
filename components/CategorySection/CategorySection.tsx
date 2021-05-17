@@ -8,10 +8,10 @@ export type TCategorySection = ICategorySubsection[];
 
 export default function CategorySection(props: { data: TCategorySection }) {
     return (
-        <div className={styles.CategorySection}>
-            {props.data.map((subsectionData: ICategorySubsection) => (
-                <CategorySubsection {...subsectionData} />
-            ))}
-        </div>
+            <div className={styles.CategorySection}>
+                {props.data.map((subsectionData: ICategorySubsection) => (
+                    <CategorySubsection {...subsectionData} />
+                ))}
+            </div>
     );
 }

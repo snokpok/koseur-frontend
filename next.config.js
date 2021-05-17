@@ -1,6 +1,7 @@
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
-
-module.exports = (phase, { defaultConfig }) => {
+const {PHASE_DEVELOPMENT_SERVER} = require("next/constants");
+const withCSS = require("@zeit/next-css");
+module.exports = withCSS({});
+module.exports = (phase, {defaultConfig}) => {
     return {
         env: {
             api:
