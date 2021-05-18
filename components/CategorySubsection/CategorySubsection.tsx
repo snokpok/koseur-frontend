@@ -1,30 +1,23 @@
 import React from "react";
 import styles from "./CategorySubsection.module.sass";
-import CategoryItem, { ICategoryItem } from "../CategoryItem/CategoryItem";
-import ScrollContainer from 'react-indiana-drag-scroll';
+import CategoryItem from "../CategoryItem/CategoryItem";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { Bar, Category, Maybe } from "../../commons/graphql/schema-interfaces";
 
-// ICategorySubsection
-export interface ICategorySubsection {
-    name: string;
-    bars: ICategoryItem[];
-}
-
-export default function CategorySubsection(props: ICategorySubsection) {
-    
+export default function CategorySubsection(props: { category: Category }) {
     return (
         <div className={styles.CategorySubsection}>
-            <div className={styles.Header}>{props.name}</div>
-            <ScrollContainer className={styles.Items} horizontal = {true} vertical={false} hideScrollbars={true}>
-                {props.bars.map((item: ICategoryItem) => (
-                            <CategoryItem {...item} />
-                        ))}
+            <div className={styles.Header}>{props.category.name}</div>
+            <ScrollContainer
+                className={styles.Items}
+                horizontal={true}
+                vertical={false}
+                hideScrollbars={true}
+            >
+                {props.category!.bars!.map((bar: Maybe<Bar>) => (
+                    <CategoryItem bar={bar} />
+                ))}
             </ScrollContainer>
-            {/* old scroll
-            <div className={styles.Items}>
-                    {props.bars.map((item: ICategoryItem) => (
-                        <CategoryItem {...item} />
-                    ))}
-            </div> */}
         </div>
     );
 }
