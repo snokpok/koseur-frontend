@@ -15,7 +15,7 @@ export default function CategorySubsection(props: { category: Category }) {
                 hideScrollbars={true}
             >
                 {props.category!.bars!.map((bar: Maybe<Bar>) => (
-                    <CategoryItem bar={bar} />
+                    <CategoryItem bar={bar as Bar} />
                 ))}
             </ScrollContainer>
         </div>

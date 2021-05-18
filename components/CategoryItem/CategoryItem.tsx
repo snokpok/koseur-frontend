@@ -11,7 +11,9 @@ export default function CategoryItem(props: { bar: Bar }) {
 
     useEffect(() => {
         if (props.bar.logo) {
-            setRightWidth(props.bar.logo.formats.thumbnail.width * ITEM_SIZE_RATIO);
+            setRightWidth(
+                props.bar.logo.formats.thumbnail.width * ITEM_SIZE_RATIO
+            );
             setRightHeight(
                 props.bar.logo.formats.thumbnail.height * ITEM_SIZE_RATIO
             );
