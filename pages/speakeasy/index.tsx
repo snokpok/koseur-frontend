@@ -41,15 +41,15 @@ export default function BarPage(props: BarPageProps) {
                 <Header barName="KOSEUR" />
                 <p className={styles.BgText}>
                     BRING ME KOSEUR
-                    <br />
                 </p>
             </div>
 
             <div className={styles.ProfileSectionOther}>
                 <div className={styles.AboutUs}>
                     <Image 
-                        loader={ImageLoaderFunction}
-                        src={props.data.bar.images[0].formats.large.url} 
+                        //loader={ImageLoaderFunction}
+                        src="/bartender.jpg"
+                        //src={props.data.bar.images[0].formats.large.url} 
                         width={600} height={900} 
                     />
 
