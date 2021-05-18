@@ -1,73 +1,56 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 import Header from "../../components/Header/Header";
 import Image from "next/image";
 import styles from "../../styles/styles.module.sass";
-// import anotherStyles from "./BarPage.module.sass"
 import FadeInImage from "../../components/FadeInImage/FadeInImage";
 import { NextPageContext } from "next";
 import { AxiosGenericQueryFunction } from "../../commons/graphql/axios-query.function";
-import { getBarById } from "../../commons/graphql/queries";
+import { getBarById } from "../../commons/graphql/qvs";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
+import {barPageData} from '../../commons/mock-data/bar-page'
+import { Drink, Bar } from "../../commons/graphql/schema-interfaces";
 
 export interface BarPageProps {
     data: {
-        bar: {
-            images: [
-                {
-                    formats: {
-                        large: {
-                            url: string
-                        }
-                    }
-                }
-            ]
-        }
+        bar: Bar
     }
 }
 
 export default function BarPage(props: BarPageProps) {
-    console.log(props)
+    const bar = props.data.bar!
     return (
         <div className={styles.ProfileContainer}>
             <div className={styles.ProfileSection}>
                 <div className={styles.BgWrap}>
                     <FadeInImage
-                        src="/background.jpeg"
+                        loader={ImageLoaderFunction}
+                        src={bar.images![0]!.formats.large.url ?? null}
                         layout="fill"
                         objectFit="cover"
                         quality={100}
                     />
                 </div>
-                <Header barName="KOSEUR" />
+                <Header barName={bar.name!}/>
                 <p className={styles.BgText}>
-                    BRING ME KOSEUR
+                    {bar.contents.BgText}
                 </p>
             </div>
 
             <div className={styles.ProfileSectionOther}>
                 <div className={styles.AboutUs}>
                     <Image 
-                        //loader={ImageLoaderFunction}
-                        src="/bartender.jpg"
-                        //src={props.data.bar.images[0].formats.large.url} 
+                        loader={ImageLoaderFunction}
+                        src={bar.images![1]!.formats.large.url} 
                         width={600} height={900} 
                     />
 
                     <div className={styles.AboutUsTitle}>
-                        <p> Bar & Champagne </p>
-                        <p>A new bar concept by Koseur </p>
+                        <p>{bar.contents.AboutUs.AboutUsTitle[0]}</p>
+                        <p>{bar.contents.AboutUs.AboutUsTitle[1]}</p>
                         <br />
                         <div className={styles.AboutUsText}>
                             <p>
-                                A bar, café and Bar&Champagne, all in one.
-                                Thousands of stories, thousands of
-                                possibilities; the atmosphere, that intimacy,
-                                that light. The picture windows, look and be
-                                seen; watch life pass by or immerse yourself in
-                                it; enjoy the hustle and bustle of a Gijón that
-                                was always modern, independent, bourgeois,
-                                sophisticated and joyful: the little New York,
-                                the little London… the Great Gijón.
+                                {bar.contents.AboutUs.AboutUsText}
                             </p>
                         </div>
                     </div>
@@ -76,22 +59,11 @@ export default function BarPage(props: BarPageProps) {
                         <Image src="/drink_1.jpg" width={600} height={900} />
 
                         <div className={styles.DrinkTitle}>
-                            <p> OUR STORY </p>
+                            <p>{bar.contents.Drink.DrinkTitle}</p>
                             <br />
                             <div className={styles.AboutUsText}>
                                 <p>
-                                    Koseur has been a beacon for the community
-                                    of Greenwich Village since it opened its
-                                    doors in 1915. Now a registered New York
-                                    City landmark, this modest meeting house has
-                                    always attracted people from all walks of
-                                    life: famous actors, writers, and musicians,
-                                    to the down-at-heel of the beatnik
-                                    generation, all of whom have found solace in
-                                    its relaxed and unpretentious environs. A
-                                    place where a cup of espresso, a warm smile
-                                    or a friendly embrace epitomized life’s
-                                    simple pleasures.
+                                    {bar.contents.Drink.AboutUsText}
                                 </p>
                             </div>
                         </div>
@@ -104,27 +76,22 @@ export default function BarPage(props: BarPageProps) {
                     <p>THE GOODS</p>
                     <Image src="/decor.png" width={900} height={50} />
                 </div>
-
-                <div className={styles.DrinkTemplate}>
-                    <Image src="/drink_2.jpg" width={800} height={550} />
-                    <div className={styles.DrinkTextRight}>
-                        <p>BOOZE and HOOCH</p>
-                    </div>
-                </div>
-
-                <div className={styles.DrinkTemplate}>
-                    <Image src="/drink_3.jpg" width={800} height={550} />
-                    <div className={styles.DrinkTextLeft}>
-                        <p>Fall in Love with The Moon</p>
-                    </div>
-                </div>
-
-                <div className={styles.DrinkTemplate}>
-                    <Image src="/drink_4.jpg" width={800} height={550} />
-                    <div className={styles.DrinkTextRight}>
-                        <p>HEAVEN in HELL</p>
-                    </div>
-                </div>
+                {bar.drinks && bar.drinks!.map((drink) => 
+                    (<div className={styles.DrinkTemplate}>
+                        <Image 
+                            loader={ImageLoaderFunction} 
+                            src={drink!.images![0]!.formats.large.url} 
+                            width={800} height={550} 
+                        />
+                        <div className={
+                            Number.parseInt(drink?.id ?? "0") % 2 == 0
+                            ? styles.DrinkTextRight 
+                            : styles.DrinkTextLeft
+                        }>
+                            <p>{drink?.name}</p>
+                        </div>
+                    </div>)
+                )}
             </div>
         </div>
     );
@@ -135,6 +102,6 @@ BarPage.getInitialProps = async (ctx: NextPageContext) => {
         const res = await AxiosGenericQueryFunction(getBarById(1))
         return res.data
     } catch {
-        return {data: null}
+        return {data: barPageData}
     }
 }
