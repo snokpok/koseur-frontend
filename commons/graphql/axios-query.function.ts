@@ -10,9 +10,13 @@ export const genericAxiosConfigs = <AxiosRequestConfig>{
 }
 
 
-export const AxiosGenericQueryFunction = async (graphqlBody: string) => {
-  return axios({
-    ...genericAxiosConfigs,
-    data: { query: graphqlBody },
-  })
-}
+export const AxiosGenericQueryFunction
+  = async (graphqlQVs: { query: string, variables: object }) => (
+    axios({
+      ...genericAxiosConfigs,
+      data: {
+        variables: graphqlQVs.variables,
+        query: graphqlQVs.query
+      }
+    })
+  )

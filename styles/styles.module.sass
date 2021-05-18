@@ -1,94 +1,23 @@
+@use './../styles/mixins.module' as mixins
 @import '../pages/LandingPage.module'
 @import '../pages/speakeasy/BarPage.module'
 @import '../pages/home/HomePage.module'
 
-.ProfileContainer
-    display: flex
-    flex-direction: column
-    .ProfileSection
-        min-height: 100vh
-        width: 100vw
-        
-.ProfileSection_2
-        min-height: 230vh
-        width: 100vw
-        background: black
-
-.ProfileSection_3
-        min-height: 230vh
-        width: 100vw
-        background: black
-
-.bgWrap
-    position: absolute
-    height: 100vh
+.BgWrap
     width: 100vw
+    height: 100vh
+    position: absolute
     overflow: hidden
-    z-index: -1
+    z-index: 0
 
-.aboutUs
-    width: 1500px
-    margin-left: auto
-    margin-right: auto
-    margin-top: 200px
-    .about_us_title
-        width: 900px
-        heigth: 500px
-        margin-top: 200px
-        text-align: center
-        font-size: 2em
-        float: right
-    .drink_title
-        width: 900px
-        heigth: 500px
-        margin-top: 200px
-        text-align: center
-        font-size: 2em
-        float: left
 
-.about_us_text
-    width: 700px
-    margin-left: auto
-    margin-right: auto
-    font-size: 0.7em
-
-.bar_concept
-    width: 60%
-    margin-left: auto
-    margin-right: auto
-    font-size: 3em
-    text-align: center
-
-.drink
-    margin-top: 200px
-
-.drink_template
-    width: 1602px
-    margin-left: auto
-    margin-right: auto
-    margin-top: 7%
-    border: 1px solid white
-    .drink_text_right
-        width: 800px
-        margin-top: 230px
-        float: right
-        text-align: center
-        font-size: 2em
-    .drink_text_left
-        width: 800px
-        margin-top: 230px
-        float: left
-        text-align: center
-        font-size: 2em
-
-.bgText
+.BgText
+    position: relative
     margin: 0
     font-size: 4rem
     line-height: 5rem
     text-align: center
     padding-top: 20%
-    animation: fadeIn
-    animation-duration: 3s
 
 .Logo
     position: fixed
