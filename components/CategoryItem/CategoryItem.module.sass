@@ -1,8 +1,14 @@
 @use "../../styles/mixins.module" as mixins
 
 .CategoryItem
-    @include mixins.fullWidthHeight($vw: 50vw, $vh: 20vh)
+    @include mixins.fullWidthHeight($vw: 50vw, $vh: 30vh)
+    
     flex-shrink: 0
     flex-basis: 50vw
-    margin: 1rem 1rem 1rem 0
+    margin: 1rem 0
     background-color: green
+    cursor: grab
+    &:focus, &:active
+        outline: none
+    .Logo
+        
