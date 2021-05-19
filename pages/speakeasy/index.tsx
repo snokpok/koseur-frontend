@@ -16,8 +16,7 @@ export interface BarPageProps {
     }
 }
 
-export default function BarPage(props: BarPageProps) {
-    const bar = props.data.bar!
+export default function BarPage({data: {bar}}: BarPageProps) {
     return (
         <div className={styles.ProfileContainer}>
             <div className={styles.ProfileSection}>
@@ -97,11 +96,15 @@ export default function BarPage(props: BarPageProps) {
     );
 }
 
-BarPage.getInitialProps = async (ctx: NextPageContext) => {
+export const getStaticProps = async () => {
     try {
         const res = await AxiosGenericQueryFunction(getBarById(1))
-        return res.data
+        return {
+            props: res.data
+        }
     } catch {
-        return {data: barPageData}
+        return {
+            props :{data: barPageData}
+        }
     }
 }
