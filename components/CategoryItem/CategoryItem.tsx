@@ -23,6 +23,7 @@ export default function CategoryItem(props: { bar: Bar }) {
     return (
         <div className={styles.CategoryItem}>
             <div>{props.bar.name}</div>
+            <a href="http://localhost:8080">a link</a>
             <div>{props.bar.description}</div>
             {props.bar.logo ? (
                 <Image
