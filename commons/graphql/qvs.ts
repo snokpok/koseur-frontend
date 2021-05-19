@@ -1,5 +1,4 @@
-export const getBarsHomePageQueryVariables = (sort: string) => (
-  {
+export const getBarsHomePageQueryVariables = (sort: string) => ({
     query: `
       query($sort: String) {
         categories(sort: $sort) {
@@ -21,13 +20,12 @@ export const getBarsHomePageQueryVariables = (sort: string) => (
       }
       `,
     variables: {
-      sort
-    }
-  }
-)
+        sort,
+    },
+});
 
 export const getBarById = (id: number) => ({
-  query: `
+    query: `
     query($id: ID!) {
       bar(id: $id) {
         name
@@ -48,7 +46,7 @@ export const getBarById = (id: number) => ({
       }
     }
     `,
-  variables: {
-    id
-  }
-})
+    variables: {
+        id,
+    },
+});

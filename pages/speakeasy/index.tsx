@@ -7,16 +7,16 @@ import { NextPageContext } from "next";
 import { AxiosGenericQueryFunction } from "../../commons/graphql/axios-query.function";
 import { getBarById } from "../../commons/graphql/qvs";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
-import {barPageData} from '../../commons/mock-data/bar-page'
+import { barPageData } from "../../commons/mock-data/bar-page";
 import { Drink, Bar } from "../../commons/graphql/schema-interfaces";
 
 export interface BarPageProps {
     data: {
-        bar: Bar
-    }
+        bar: Bar;
+    };
 }
 
-export default function BarPage({data: {bar}}: BarPageProps) {
+export default function BarPage({ data: { bar } }: BarPageProps) {
     return (
         <div className={styles.ProfileContainer}>
             <div className={styles.ProfileSection}>
@@ -29,18 +29,17 @@ export default function BarPage({data: {bar}}: BarPageProps) {
                         quality={100}
                     />
                 </div>
-                <Header barName={bar.name!}/>
-                <p className={styles.BgText}>
-                    {bar.contents.BgText}
-                </p>
+                <Header barName={bar.name!} />
+                <p className={styles.BgText}>{bar.contents.BgText}</p>
             </div>
 
             <div className={styles.ProfileSectionOther}>
                 <div className={styles.AboutUs}>
-                    <Image 
+                    <Image
                         loader={ImageLoaderFunction}
-                        src={bar.images![1]!.formats.large.url} 
-                        width={600} height={900} 
+                        src={bar.images![1]!.formats.large.url}
+                        width={600}
+                        height={900}
                     />
 
                     <div className={styles.AboutUsTitle}>
@@ -48,9 +47,7 @@ export default function BarPage({data: {bar}}: BarPageProps) {
                         <p>{bar.contents.AboutUs.AboutUsTitle[1]}</p>
                         <br />
                         <div className={styles.AboutUsText}>
-                            <p>
-                                {bar.contents.AboutUs.AboutUsText}
-                            </p>
+                            <p>{bar.contents.AboutUs.AboutUsText}</p>
                         </div>
                     </div>
 
@@ -61,9 +58,7 @@ export default function BarPage({data: {bar}}: BarPageProps) {
                             <p>{bar.contents.Drink.DrinkTitle}</p>
                             <br />
                             <div className={styles.AboutUsText}>
-                                <p>
-                                    {bar.contents.Drink.AboutUsText}
-                                </p>
+                                <p>{bar.contents.Drink.AboutUsText}</p>
                             </div>
                         </div>
                     </div>
@@ -75,22 +70,26 @@ export default function BarPage({data: {bar}}: BarPageProps) {
                     <p>THE GOODS</p>
                     <Image src="/decor.png" width={900} height={50} />
                 </div>
-                {bar.drinks && bar.drinks!.map((drink) => 
-                    (<div className={styles.DrinkTemplate}>
-                        <Image 
-                            loader={ImageLoaderFunction} 
-                            src={drink!.images![0]!.formats.large.url} 
-                            width={800} height={550} 
-                        />
-                        <div className={
-                            Number.parseInt(drink?.id ?? "0") % 2 == 0
-                            ? styles.DrinkTextRight 
-                            : styles.DrinkTextLeft
-                        }>
-                            <p>{drink?.name}</p>
+                {bar.drinks &&
+                    bar.drinks!.map((drink) => (
+                        <div className={styles.DrinkTemplate}>
+                            <Image
+                                loader={ImageLoaderFunction}
+                                src={drink!.images![0]!.formats.large.url}
+                                width={800}
+                                height={550}
+                            />
+                            <div
+                                className={
+                                    Number.parseInt(drink?.id ?? "0") % 2 == 0
+                                        ? styles.DrinkTextRight
+                                        : styles.DrinkTextLeft
+                                }
+                            >
+                                <p>{drink?.name}</p>
+                            </div>
                         </div>
-                    </div>)
-                )}
+                    ))}
             </div>
         </div>
     );
@@ -98,13 +97,13 @@ export default function BarPage({data: {bar}}: BarPageProps) {
 
 export const getStaticProps = async () => {
     try {
-        const res = await AxiosGenericQueryFunction(getBarById(1))
+        const res = await AxiosGenericQueryFunction(getBarById(1));
         return {
-            props: res.data
-        }
+            props: res.data,
+        };
     } catch {
         return {
-            props :{data: barPageData}
-        }
+            props: { data: barPageData },
+        };
     }
-}
+};

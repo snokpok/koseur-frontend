@@ -31,7 +31,11 @@ export default function HomePage({ data }: HomePageProps) {
                     height={sideLength}
                 />
                 <div className={styles.IntroHomePage}>Styles</div>
-                <CategorySection categories={data?.categories ?? homePageData.data.categories} />
+                <CategorySection
+                    categories={
+                        data?.categories ?? homePageData.data.categories
+                    }
+                />
             </div>
         </>
     );
