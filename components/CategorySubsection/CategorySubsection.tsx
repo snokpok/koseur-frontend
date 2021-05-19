@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import styles from "./CategorySubsection.module.sass";
 import CategoryItem from "../CategoryItem/CategoryItem";
-import ScrollContainer from "react-indiana-drag-scroll";
 import { Bar, Category, Maybe } from "../../commons/graphql/schema-interfaces";
 import Carousel from "nuka-carousel";
 
