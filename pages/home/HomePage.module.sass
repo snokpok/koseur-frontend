@@ -18,6 +18,8 @@ $localeBarHeight: 10vh
             height: 100%
             background-color: black
             transition: 0.3s
+            border: 1px solid white
+            font-size: 1.5em
             @include mixins.flex($dir: row)
             &:hover
                 background-color: fonts.$koseur-gold
@@ -36,11 +38,11 @@ $localeBarHeight: 10vh
         width: 50px
         margin-left: auto
         margin-right: auto
-        margin-top: 18%
+        margin-top: 16%
         transition: all 1s
     .ArrowIconContainer:hover
         transition: all 1s
-        transform: translateY(50px)
+        transform: scale(1.3)
     .ArrowIcon
         width: 50px
         height: 50px

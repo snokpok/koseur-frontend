@@ -21,6 +21,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { IoIosArrowDropdown } from "react-icons/io";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Parallax } from 'react-parallax';
 
 export interface HomePageProps {
     data: {
@@ -63,22 +64,17 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <link rel="stylesheet" />
             </Head>
 
-            <div className={styles.HomeSection}>
-                <FadeInImage
-                    src="/homepage.jpg"
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
-                />
-
-                <Header barName={"KOSEUR"} />
-                <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
-                <div className={styles.ArrowIconContainer}>
-                    <AnchorLink href="#locale">
-                        <IoIosArrowDropdown className={styles.ArrowIcon} />
-                    </AnchorLink>
+            <Parallax bgImage="/homepage.jpg" strength={400}>
+                <div className={styles.HomeSection}>
+                    <Header barName={"KOSEUR"} />
+                    <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
+                    <div className={styles.ArrowIconContainer}>
+                        <AnchorLink href="#locale">
+                            <IoIosArrowDropdown className={styles.ArrowIcon} />
+                        </AnchorLink>
+                    </div>
                 </div>
-            </div>
+            </Parallax>
 
             <section id="locale">
                 <div className={styles.HomePage}>
