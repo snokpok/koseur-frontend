@@ -24,12 +24,12 @@ export default function HomePage({ data, city }: HomePageProps) {
     const [dataHome, setDataHome] = useState<HomePageProps>({data: {categories: []}})
 
     useEffect(() => {
-        switch (city) {
-            case "Hanoi":
+        if (!data) {
+            if (city === "Hanoi")
                 setDataHome(homePageHanoiData as HomePageProps)
-            case "HCM":
+            else if (city === "HCM")
                 setDataHome(homePageHCMData as HomePageProps)
-            default: 
+            else
                 setDataHome(homePageData as HomePageProps)
         }
     }, [])
@@ -57,8 +57,7 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <div className={styles.IntroHomePage}>Styles</div>
                 <CategorySection
                     categories={
-                        data?.categories 
-                            ?? dataHome.data.categories
+                        data?.categories ?? dataHome.data.categories
                     }
                 />
             </div>
