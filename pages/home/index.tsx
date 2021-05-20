@@ -19,6 +19,7 @@ import { Category } from "../../commons/graphql/schema-interfaces";
 import Header from "../../components/Header/Header";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { IoIosArrowDropdown } from "react-icons/io";
 
 export interface HomePageProps {
     data: {
@@ -44,16 +45,16 @@ export default function HomePage({ data, city }: HomePageProps) {
         }
     }, []);
 
-    const handleLocalePress: (
-        city: string
-    ) => MouseEventHandler<HTMLDivElement> = (city: string) => {
-        return (e) => {
-            router.push(`/home?city=${city}`, undefined, {
-                scroll: false,
-                shallow: true,
-            });
-        };
-    };
+    //    const handleLocalePress: (
+    //        city: string
+    //    ) => MouseEventHandler<HTMLDivElement> = (city: string) => {
+    //        return (e) => {
+    //            router.push(`/home?city=${city}`, undefined, {
+    //                scroll: false,
+    //                shallow: true,
+    //            });
+    //        };
+    //    };
     return (
         <>
             <Head>
@@ -71,22 +72,17 @@ export default function HomePage({ data, city }: HomePageProps) {
 
                 <Header barName={"KOSEUR"} />
                 <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
+                <div className={styles.ArrowIconContainer}>
+                    <a href=".HomePage">
+                        <IoIosArrowDropdown className={styles.ArrowIcon} />
+                    </a>
+                </div>
             </div>
 
             <div className={styles.HomePage}>
                 <div className={styles.IntroHomePage}>
-                    <div
-                        className={styles.Locale}
-                        onClick={handleLocalePress("Hanoi")}
-                    >
-                        Hanoi
-                    </div>
-                    <div
-                        className={styles.Locale}
-                        onClick={handleLocalePress("HCM")}
-                    >
-                        HCMC
-                    </div>
+                    <div className={styles.Locale}>Hanoi</div>
+                    <div className={styles.Locale}>HCMC</div>
                 </div>
                 <CategorySection
                     categories={data?.categories ?? dataHome.data.categories}
@@ -97,21 +93,21 @@ export default function HomePage({ data, city }: HomePageProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    try {
-        const res = await AxiosGenericQueryFunction(
-            getBarsHomePageQueryVariables("id", {
-                city: ctx.query.city,
-            })
-        );
-        return {
-            props: {
-                data: res.data,
-                city: ctx.query?.city,
-            },
-        };
-    } catch {
-        return {
-            props: { data: null, city: ctx.query.city },
-        };
-    }
+    //    try {
+    //        const res = await AxiosGenericQueryFunction(
+    //            getBarsHomePageQueryVariables("id", {
+    //                city: ctx.query.city,
+    //            })
+    //        );
+    //        return {
+    //            props: {
+    //                data: res.data,
+    //                city: ctx.query?.city,
+    //            },
+    //        };
+    //    } catch {
+    return {
+        props: { data: null, city: ctx.params?.city ?? null },
+    };
 };
+//};
