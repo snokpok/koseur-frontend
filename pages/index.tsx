@@ -5,7 +5,7 @@ import styles from "../styles/styles.module.sass";
 import Head from "next/head";
 
 export default function LandingPage() {
-    const sideLength = 200;
+    const sideLength = 500;
 
     return (
         <>

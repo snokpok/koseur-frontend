@@ -22,7 +22,7 @@ export default function Header(props: HeaderProps) {
                 <div className={styles.Logo}>
                     <Link href="/speakeasy">
                         <a>
-                            <Image src="/logo.png" width={100} height={115} />
+                            <Image src="/logo.png" width={200} height={200} />
                         </a>
                     </Link>
                 </div>

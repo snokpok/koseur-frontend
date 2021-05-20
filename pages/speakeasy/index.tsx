@@ -3,7 +3,6 @@ import Header from "../../components/Header/Header";
 import Image from "next/image";
 import styles from "../../styles/styles.module.sass";
 import FadeInImage from "../../components/FadeInImage/FadeInImage";
-import { NextPageContext } from "next";
 import { AxiosGenericQueryFunction } from "../../commons/graphql/axios-query.function";
 import { getBarById } from "../../commons/graphql/qvs";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
@@ -23,7 +22,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                 <div className={styles.BgWrap}>
                     <FadeInImage
                         loader={ImageLoaderFunction}
-                        src={bar.images![0]!.formats.large.url ?? null}
+                        src={bar?.images![0]!.formats.large.url ?? null}
                         layout="fill"
                         objectFit="cover"
                         quality={100}
@@ -103,7 +102,7 @@ export const getStaticProps = async () => {
         };
     } catch {
         return {
-            props: { data: barPageData },
+            props: { ...barPageData },
         };
     }
 };

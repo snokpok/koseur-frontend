@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
 
 body {
     min-height: 100%;
@@ -9,7 +10,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, "Poiret One";
+    font-family: -apple-system, "Kumbh Sans";
     color: white;
     background-color: black;
     font-size: 18px;
