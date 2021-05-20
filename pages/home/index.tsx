@@ -20,6 +20,7 @@ import Header from "../../components/Header/Header";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { IoIosArrowDropdown } from "react-icons/io";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 export interface HomePageProps {
     data: {
@@ -73,21 +74,23 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <Header barName={"KOSEUR"} />
                 <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
                 <div className={styles.ArrowIconContainer}>
-                    <a href=".HomePage">
+                    <AnchorLink href="#locale">
                         <IoIosArrowDropdown className={styles.ArrowIcon} />
-                    </a>
+                    </AnchorLink>
                 </div>
             </div>
 
-            <div className={styles.HomePage}>
-                <div className={styles.IntroHomePage}>
-                    <div className={styles.Locale}>Hanoi</div>
-                    <div className={styles.Locale}>HCMC</div>
+            <section id="locale">
+                <div className={styles.HomePage}>
+                    <div className={styles.IntroHomePage}>
+                        <div className={styles.Locale}>Hanoi</div>
+                        <div className={styles.Locale}>HCMC</div>
+                    </div>
+                    <CategorySection
+                        categories={data?.categories ?? dataHome.data.categories}
+                    />
                 </div>
-                <CategorySection
-                    categories={data?.categories ?? dataHome.data.categories}
-                />
-            </div>
+            </section>
         </>
     );
 }
