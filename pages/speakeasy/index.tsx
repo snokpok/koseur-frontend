@@ -102,7 +102,7 @@ export const getStaticProps = async () => {
         };
     } catch {
         return {
-            props: { data: barPageData },
+            props: { ...barPageData },
         };
     }
 };
