@@ -1,8 +1,10 @@
 import React, {
+    createRef,
     EventHandler,
     MouseEvent,
     MouseEventHandler,
     useEffect,
+    useRef,
     useState,
 } from "react";
 import styles from "../../styles/styles.module.sass";
@@ -21,7 +23,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { IoIosArrowDropdown } from "react-icons/io";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import { Parallax } from 'react-parallax';
+import { Parallax } from "react-parallax";
 
 export interface HomePageProps {
     data: {
@@ -35,6 +37,7 @@ export default function HomePage({ data, city }: HomePageProps) {
     const [dataHome, setDataHome] = useState<HomePageProps>({
         data: { categories: [] },
     });
+    const categorySection: React.RefObject<HTMLInputElement> = useRef(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -57,6 +60,20 @@ export default function HomePage({ data, city }: HomePageProps) {
     //            });
     //        };
     //    };
+
+    useEffect(() => {
+        const sectionBreakpoint = 500;
+        window.addEventListener("scroll", () => {
+            const currentScrollPos = window.pageYOffset;
+            if (currentScrollPos >= sectionBreakpoint) {
+                document!.querySelector("html")!.style.overflowY = "scroll";
+                categorySection!.current!.style.animation =
+                    "fadeInLeft 1s ease backwards";
+                categorySection!.current!.style.visibility = "visible";
+            }
+        });
+    }, []);
+
     return (
         <>
             <Head>
@@ -76,16 +93,18 @@ export default function HomePage({ data, city }: HomePageProps) {
                 </div>
             </Parallax>
 
-            <section id="locale">
-                <div className={styles.HomePage}>
-                    <div className={styles.IntroHomePage}>
-                        <div className={styles.Locale}>Hanoi</div>
-                        <div className={styles.Locale}>HCMC</div>
-                    </div>
-                    <CategorySection
-                        categories={data?.categories ?? dataHome.data.categories}
-                    />
+            <section
+                id="locale"
+                className={styles.HomePage}
+                ref={categorySection}
+            >
+                <div className={styles.IntroHomePage}>
+                    <div className={styles.Locale}>Hanoi</div>
+                    <div className={styles.Locale}>HCMC</div>
                 </div>
+                <CategorySection
+                    categories={data?.categories ?? dataHome.data.categories}
+                />
             </section>
         </>
     );
