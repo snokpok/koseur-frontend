@@ -10,6 +10,7 @@ import { NextPageContext } from "next";
 import { getBarsHomePageQueryVariables } from "../../commons/graphql/qvs";
 import { AxiosGenericQueryFunction } from "../../commons/graphql/axios-query.function";
 import { Category } from "../../commons/graphql/schema-interfaces";
+import Header from "../../components/Header/Header";
 
 export interface HomePageProps {
     data: {
@@ -39,12 +40,20 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <title>Koseur | Home</title>
                 <link rel="stylesheet" />
             </Head>
-            <div className={styles.HomePage}>
+            
+            <div className={styles.HomeSection}>
                 <FadeInImage
-                    src="/logo.png"
-                    width={sideLength}
-                    height={sideLength}
+                    src="/homepage.jpg"
+                    layout="fill"
+                    objectFit="cover"
+                    quality={100}
                 />
+
+                <Header barName={"KOSEUR"} />
+                <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
+            </div>
+
+            <div className={styles.HomePage}>
                 <div className={styles.IntroHomePage}>Styles</div>
                 <CategorySection
                     categories={
