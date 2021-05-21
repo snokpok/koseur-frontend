@@ -39,7 +39,7 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
                     </a>
                     <div className={styles.BarInfoDes}>{bar.description}</div>
                 </div>
-                <div>
+                <div className={styles.LogoContainer}>
                     {bar.logo ? (
                         <Image
                             //loader={ImageLoaderFunction}
