@@ -1,5 +1,8 @@
 @use "../../styles/mixins.module" as mixins
-
+.BarCover
+    &:hover
+        transform: scale(1.05)
+        transition: all 0.5s
 .CategoryItem
     @include mixins.fullWidthHeight($vw: 50vw, $vh: 55vh)
     @include mixins.flex($dir: row, $jc: space-around, $ai: center)

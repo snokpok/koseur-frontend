@@ -22,6 +22,7 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
 
     return (
         <div
+            className={styles.BarCover}
             style={{
                 width: "100%",
                 backgroundImage: `url(${imagePath("small")})`,
