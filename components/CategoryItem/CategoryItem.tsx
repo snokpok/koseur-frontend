@@ -9,6 +9,8 @@ export default function CategoryItem({bar}: { bar: Bar }) {
     const ITEM_SIZE_RATIO = 7 / 8;
     const [rightWidth, setRightWidth] = useState<number>(0);
     const [rightHeight, setRightHeight] = useState<number>(0);
+    const imagePath = `/${bar.name}-cover.jpg`;
+    console.log(imagePath);
 
     useEffect(() => {
         if (bar.logo) {
@@ -22,18 +24,24 @@ export default function CategoryItem({bar}: { bar: Bar }) {
     });
 
     return (
-        <div className={styles.CategoryItem}>
+        <div className={styles.CategoryItem} style={{backgroundImage: `url(${imagePath})`}}>
             {/* <FadeInImage
                 loader={ImageLoaderFunction}
-                src={bar.logo?.formats.thumbnail.url ?? null}
+                // src={bar.logo?.formats.thumbnail.url ?? null}
+                src="/politeco-cover.jpg"
                 layout="fill"
                 objectFit="cover"
                 quality={100}
+                
             /> */}
-            <div>{bar.name}</div>
-            <a href="http://localhost:8080">a link</a>
-            <div>{bar.description}</div>
-            <div>
+            <div className={styles.BarInfo} >
+            
+                <div className={styles.BarInfoName}>{bar.name}</div>
+                <hr className={styles.BarInfoDivider} />
+                <a className={styles.BarLink} href="http://localhost:8080">a link</a>
+                <div className={styles.BarInfoDes}>{bar.description}</div>
+            </div>
+            <div className={styles.Logo}>
                 {bar.logo ? (
                     <Image
                         loader={ImageLoaderFunction}

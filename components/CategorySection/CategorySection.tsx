@@ -6,7 +6,7 @@ import styles from "./CategorySection.module.sass";
 export default function CategorySection(props: { categories: Category[] }) {
     return (
         <div className={styles.CategorySection}>
-            {props.categories.map((category) => (
+            {props.categories.map((category: Category) => (
                 <CategorySubsection category={category} />
             ))}
         </div>

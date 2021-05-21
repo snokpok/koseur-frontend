@@ -2,13 +2,20 @@
 
 .CategoryItem
     @include mixins.fullWidthHeight($vw: 50vw, $vh: 30vh)
-    
+    @include mixins.flex($dir: row, $jc: space-around, $ai: center)
     flex-shrink: 0
     flex-basis: 50vw
     margin: 1rem 0
-    background-color: green
+    // background-color: green
+    // background-image: url("/politeco-cover.jpg")
     cursor: grab
     &:focus, &:active
         outline: none
-    .Logo
+    .BarInfo
+        @include mixins.flex($dir: column, $jc: flex-start, $ai: flex-start)
+        .BarInfoDivider
+            color: white
+            width: 100%
+    
+
         
