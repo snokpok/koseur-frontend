@@ -1,9 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap");
+
+body::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: black;
+    display: none;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #93781f;
+    outline: 1px solid #93781f;
+}
 
 body {
     min-height: 100%;
+    scrollbar-width: none;
 }
 
 html,

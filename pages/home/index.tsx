@@ -1,8 +1,10 @@
 import React, {
+    createRef,
     EventHandler,
     MouseEvent,
     MouseEventHandler,
     useEffect,
+    useRef,
     useState,
 } from "react";
 import styles from "../../styles/styles.module.sass";
@@ -20,6 +22,8 @@ import Header from "../../components/Header/Header";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { IoIosArrowDropdown } from "react-icons/io";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Parallax } from "react-parallax";
 
 export interface HomePageProps {
     data: {
@@ -33,6 +37,9 @@ export default function HomePage({ data, city }: HomePageProps) {
     const [dataHome, setDataHome] = useState<HomePageProps>({
         data: { categories: [] },
     });
+    const [scrollOffset, setScrollOffset] = useState<number>(0)
+    const homeSectionRef: React.RefObject<HTMLDivElement> = useRef(null);
+    const categorySection: React.RefObject<HTMLDivElement> = useRef(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -55,6 +62,19 @@ export default function HomePage({ data, city }: HomePageProps) {
     //            });
     //        };
     //    };
+
+    // const sectionBreakpoint = 10;
+    // useEffect(() => {
+    //     window.addEventListener("scroll", () => {
+    //         const currentScrollPos = window.pageYOffset;
+    //         if (scrollOffset >= sectionBreakpoint) {
+    //             document!.querySelector("html")!.style.overflowY = "auto";
+    //         } else {
+    //             document!.querySelector("html")!.style.overflowY = "hidden";
+    //         }
+    //     });
+    // }, []);
+
     return (
         <>
             <Head>
@@ -62,24 +82,23 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <link rel="stylesheet" />
             </Head>
 
-            <div className={styles.HomeSection}>
-                <FadeInImage
-                    src="/homepage.jpg"
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
-                />
-
-                <Header barName={"KOSEUR"} />
-                <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
-                <div className={styles.ArrowIconContainer}>
-                    <a href=".HomePage">
-                        <IoIosArrowDropdown className={styles.ArrowIcon} />
-                    </a>
+            <Parallax bgImage="/homepage.jpg" strength={500} blur={{min: -5, max: 5}}>
+                <div className={styles.HomeSection} ref={homeSectionRef}>
+                    <Header barName={"KOSEUR"} />
+                    <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
+                    <div className={styles.ArrowIconContainer}>
+                        <AnchorLink href="#locale">
+                            <IoIosArrowDropdown className={styles.ArrowIcon} />
+                        </AnchorLink>
+                    </div>
                 </div>
-            </div>
+            </Parallax>
 
-            <div className={styles.HomePage}>
+            <section
+                id="locale"
+                className={styles.HomePage}
+                ref={categorySection}
+            >
                 <div className={styles.IntroHomePage}>
                     <div className={styles.Locale}>Hanoi</div>
                     <div className={styles.Locale}>HCMC</div>
@@ -87,7 +106,7 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <CategorySection
                     categories={data?.categories ?? dataHome.data.categories}
                 />
-            </div>
+            </section>
         </>
     );
 }

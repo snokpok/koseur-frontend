@@ -17,6 +17,7 @@ export default function CategorySubsection(props: { category: Category }) {
             <Carousel
                 disableEdgeSwiping={true}
                 slidesToShow={2}
+                swiping={false}
                 autoplay={true}
                 cellSpacing={30}
                 renderBottomCenterControls={null}
@@ -25,6 +26,9 @@ export default function CategorySubsection(props: { category: Category }) {
                     prevButtonText: "<",
                     nextButtonStyle: buttonStyle,
                     prevButtonStyle: buttonStyle,
+                }}
+                style={{
+                    overflow: 'auto'
                 }}
             >
                 {props.category!.bars!.map((bar: Maybe<Bar>) => (
