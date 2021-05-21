@@ -1,11 +1,47 @@
 @use "../../styles/mixins.module" as mixins
+@use "../../styles/variables.module.sass" as fonts
+
+$localeBarHeight: 10vh
 
 .HomePage
     background-color: #000
     @include mixins.flex()
     min-height: 100vh
-
     .IntroHomePage
-        @include mixins.fullWidthHeight($vh: 35vh)
+        width: 15vw
+        height: $localeBarHeight
+        @include mixins.flex($dir: row)
+        z-index: 0
+        .Locale
+            height: 50%
+            background-color: black
+            border-bottom: 1px solid black
+            transition: all 0.3s
+            font-size: 1.5em
+            margin: 10%
+            @include mixins.flex($dir: row)
+            &:hover
+                color: fonts.$koseur-gold
+                border-bottom: 1px solid fonts.$koseur-gold
+                line-height: 1.5em
+                cursor: pointer
     .CategoriesSection
         @include mixins.fullWidthHeight
+        z-index: 0
+
+.HomeSection 
+    @include mixins.fullWidthHeight
+    overflow: hidden
+    .ArrowIconContainer
+        margin: 10% auto
+        width: 50px
+        height: 50px
+        transition: all 1s
+        .ArrowIcon
+            width: 50px
+            height: 50px
+            position: absolute
+        &:hover
+            transition: all 1s
+            transform: scale(1.3)
+    
