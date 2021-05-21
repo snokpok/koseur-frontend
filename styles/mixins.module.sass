@@ -14,3 +14,9 @@
     margin-top: 230px
     text-align: center
     font-size: 2em
+
+@mixin blurBrowserCrossComp($blur)
+    backdrop-filter: blur($blur)
+    -webkit-backdrop-filter: blur($blur)
+    -o-filter: blur($blur)
+    -ms-filter: blur($blur)

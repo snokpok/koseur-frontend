@@ -29,7 +29,6 @@ export default function CategorySubsection(props: { category: Category }) {
             <Carousel
                 disableEdgeSwiping={true}
                 slidesToShow={2}
-                autoplay={true}
                 dragging={props.category!.bars!.length > 2}
                 cellSpacing={50}
                 renderBottomCenterControls={null}
