@@ -7,7 +7,10 @@ import Carousel from "nuka-carousel";
 export default function CategorySubsection(props: { category: Category }) {
     const buttonStyle = {
         borderRadius: "50%",
-        width: "2rem",
+        width: "4rem",
+        height: "4rem",
+        opacity: 0.7,
+        backgroundColor: "black",
     };
 
     return (
@@ -17,9 +20,8 @@ export default function CategorySubsection(props: { category: Category }) {
             <Carousel
                 disableEdgeSwiping={true}
                 slidesToShow={2}
-                swiping={false}
                 autoplay={true}
-                cellSpacing={30}
+                cellSpacing={50}
                 renderBottomCenterControls={null}
                 defaultControlsConfig={{
                     nextButtonText: ">",
@@ -28,7 +30,7 @@ export default function CategorySubsection(props: { category: Category }) {
                     prevButtonStyle: buttonStyle,
                 }}
                 style={{
-                    overflow: 'auto'
+                    overflow: "auto",
                 }}
             >
                 {props.category!.bars!.map((bar: Maybe<Bar>) => (

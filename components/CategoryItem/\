@@ -27,6 +27,7 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
                 backgroundImage: `url(${imagePath("small")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backdropFilter: "blur(1px)",
             }}
         >
             <div className={styles.CategoryItem}>
@@ -38,7 +39,7 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
                     </a>
                     <div className={styles.BarInfoDes}>{bar.description}</div>
                 </div>
-                <div>
+                <div className={styles.Logo}>
                     {bar.logo ? (
                         <Image
                             //loader={ImageLoaderFunction}
@@ -49,7 +50,6 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
                             }`}
                             width={rightWidth}
                             height={rightHeight}
-                            className={styles.Logo}
                         />
                     ) : null}
                 </div>
