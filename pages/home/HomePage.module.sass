@@ -26,11 +26,11 @@ $localeBarHeight: 10vh
                 line-height: 1.5em
                 cursor: pointer
     .CategoriesSection
-        @include mixins.fullWidthHeight
+        @include mixins.fullWidthHeight()
         z-index: 0
 
-.HomeSection 
-    @include mixins.fullWidthHeight
+.HomeSection
+    @include mixins.fullWidthHeight()
     overflow: hidden
     .ArrowIconContainer
         margin: 10% auto
@@ -44,4 +44,3 @@ $localeBarHeight: 10vh
         &:hover
             transition: all 1s
             transform: scale(1.3)
-    

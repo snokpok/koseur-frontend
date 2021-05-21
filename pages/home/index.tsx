@@ -37,7 +37,9 @@ export default function HomePage({ data, city }: HomePageProps) {
     const [dataHome, setDataHome] = useState<HomePageProps>({
         data: { categories: [] },
     });
-    const categorySection: React.RefObject<HTMLInputElement> = useRef(null);
+    const [scrollOffset, setScrollOffset] = useState<number>(0)
+    const homeSectionRef: React.RefObject<HTMLDivElement> = useRef(null);
+    const categorySection: React.RefObject<HTMLDivElement> = useRef(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -61,18 +63,17 @@ export default function HomePage({ data, city }: HomePageProps) {
     //        };
     //    };
 
-    useEffect(() => {
-        const sectionBreakpoint = 500;
-        window.addEventListener("scroll", () => {
-            const currentScrollPos = window.pageYOffset;
-            if (currentScrollPos >= sectionBreakpoint) {
-                document!.querySelector("html")!.style.overflowY = "scroll";
-                categorySection!.current!.style.animation =
-                    "fadeInLeft 1s ease backwards";
-                categorySection!.current!.style.visibility = "visible";
-            }
-        });
-    }, []);
+    // const sectionBreakpoint = 10;
+    // useEffect(() => {
+    //     window.addEventListener("scroll", () => {
+    //         const currentScrollPos = window.pageYOffset;
+    //         if (scrollOffset >= sectionBreakpoint) {
+    //             document!.querySelector("html")!.style.overflowY = "auto";
+    //         } else {
+    //             document!.querySelector("html")!.style.overflowY = "hidden";
+    //         }
+    //     });
+    // }, []);
 
     return (
         <>
@@ -81,8 +82,8 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <link rel="stylesheet" />
             </Head>
 
-            <Parallax bgImage="/homepage.jpg" strength={400}>
-                <div className={styles.HomeSection}>
+            <Parallax bgImage="/homepage.jpg" strength={500} blur={{min: -5, max: 5}}>
+                <div className={styles.HomeSection} ref={homeSectionRef}>
                     <Header barName={"KOSEUR"} />
                     <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
                     <div className={styles.ArrowIconContainer}>

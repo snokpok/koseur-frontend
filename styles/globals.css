@@ -5,6 +5,7 @@
 body::-webkit-scrollbar {
     width: 0.5em;
     background-color: black;
+    display: none;
 }
 
 body::-webkit-scrollbar-track {
@@ -19,8 +20,6 @@ body::-webkit-scrollbar-thumb {
 body {
     min-height: 100%;
     scrollbar-width: none;
-    overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 html,
