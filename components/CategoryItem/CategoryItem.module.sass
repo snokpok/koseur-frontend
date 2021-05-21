@@ -7,12 +7,20 @@
     flex-basis: 50vw
     margin: 1rem 0
     cursor: grab
-    backdrop-filter: blur(3px)
+    backdrop-filter: blur(2.5px)
     -webkit-backdrop-filter: blur(9px)
     -o-filter: blur(9px)
     -ms-filter: blur(5px)
+    transition: all 0.5s
+    font-size: 1.3em
     &:focus, &:active
         outline: none
+    &:hover
+        backdrop-filter: blur(0)
+        background: rgba(0,0,0,.6)
+        transform: scale(1.05)
+        transition: all 0.5s
+        
     .BarInfo
         @include mixins.flex($dir: column, $jc: flex-start, $ai: flex-start)
         .BarInfoDivider

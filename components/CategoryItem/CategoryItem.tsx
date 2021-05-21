@@ -6,7 +6,7 @@ import { Bar } from "../../commons/graphql/schema-interfaces";
 import FadeInImage from "../FadeInImage/FadeInImage";
 
 export default function CategoryItem({ bar }: { bar: Bar }) {
-    const ITEM_SIZE_RATIO = 7 / 8;
+    const ITEM_SIZE_RATIO = 9 / 8;
     const [rightWidth, setRightWidth] = useState<number>(0);
     const [rightHeight, setRightHeight] = useState<number>(0);
     const imagePath = (size: string) =>
