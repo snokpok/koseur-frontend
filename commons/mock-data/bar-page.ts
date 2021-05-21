@@ -3,22 +3,6 @@ export const barPageData = {
         bar: {
             name: "Speakeasy",
             description: "To enjoy life the easy way",
-            contents: {
-                Drink: {
-                    DrinkTitle: "OUR STORY",
-                    AboutUsText:
-                        "Koseur has been a beacon for the community of Greenwich Village since it opened its doors in 1915. Now a registered New York City landmark, this modest meeting house has always attracted people from all walks of life: famous actors, writers, and musicians, to the down-at-heel of the beatnik generation, all of whom have found solace in its relaxed and unpretentious environs. A place where a cup of espresso, a warm smile or a friendly embrace epitomized life’s simple pleasures.",
-                },
-                BgText: "BRING ME KOSEUR",
-                AboutUs: {
-                    AboutUsText:
-                        "A bar, café and Bar&Champagne, all in one. Thousands of stories, thousands of possibilities; the atmosphere, that intimacy, that light. The picture windows, look and be seen; watch life pass by or immerse yourself in it; enjoy the hustle and bustle of a Gijón that was always modern, independent, bourgeois, sophisticated and joyful: the little New York, the little London… the Great Gijón.",
-                    AboutUsTitle: [
-                        "Bar & Champagne",
-                        "A new bar concept by Koseur",
-                    ],
-                },
-            },
             images: [
                 {
                     formats: {
@@ -169,7 +153,6 @@ export const barPageData = {
                 {
                     id: "2",
                     name: "BOOZE and HOOCH",
-                    ingredients: null,
                     images: [
                         {
                             formats: {
@@ -220,11 +203,11 @@ export const barPageData = {
                             },
                         },
                     ],
+                    ingredients: null,
                 },
                 {
                     id: "3",
                     name: "Fall in Love with The Moon",
-                    ingredients: null,
                     images: [
                         {
                             formats: {
@@ -275,11 +258,11 @@ export const barPageData = {
                             },
                         },
                     ],
+                    ingredients: null,
                 },
                 {
                     id: "4",
                     name: "HEAVEN in HELL",
-                    ingredients: null,
                     images: [
                         {
                             formats: {
@@ -329,6 +312,141 @@ export const barPageData = {
                                 },
                             },
                         },
+                    ],
+                    ingredients: null,
+                },
+                {
+                    id: "5",
+                    name: "Apple Martini",
+                    images: [
+                        {
+                            formats: {
+                                large: {
+                                    ext: ".png",
+                                    url: "/uploads/large_apple_martini_c4f54c24cb.png",
+                                    hash: "large_apple_martini_c4f54c24cb",
+                                    mime: "image/png",
+                                    name: "large_apple-martini.png",
+                                    path: null,
+                                    size: 1260.06,
+                                    width: 1000,
+                                    height: 667,
+                                },
+                                small: {
+                                    ext: ".png",
+                                    url: "/uploads/small_apple_martini_c4f54c24cb.png",
+                                    hash: "small_apple_martini_c4f54c24cb",
+                                    mime: "image/png",
+                                    name: "small_apple-martini.png",
+                                    path: null,
+                                    size: 351.93,
+                                    width: 500,
+                                    height: 333,
+                                },
+                                medium: {
+                                    ext: ".png",
+                                    url: "/uploads/medium_apple_martini_c4f54c24cb.png",
+                                    hash: "medium_apple_martini_c4f54c24cb",
+                                    mime: "image/png",
+                                    name: "medium_apple-martini.png",
+                                    path: null,
+                                    size: 742.59,
+                                    width: 750,
+                                    height: 500,
+                                },
+                                thumbnail: {
+                                    ext: ".png",
+                                    url: "/uploads/thumbnail_apple_martini_c4f54c24cb.png",
+                                    hash: "thumbnail_apple_martini_c4f54c24cb",
+                                    mime: "image/png",
+                                    name: "thumbnail_apple-martini.png",
+                                    path: null,
+                                    size: 87.75,
+                                    width: 234,
+                                    height: 156,
+                                },
+                            },
+                        },
+                    ],
+                    ingredients: [
+                        "vodka",
+                        "apple juice",
+                        "apple cider",
+                        "apple liqueur",
+                        "apple brandy",
+                    ],
+                },
+                {
+                    id: "6",
+                    name: "Long Island Ice Tea",
+                    images: [],
+                    ingredients: [
+                        "vodka",
+                        "tequila",
+                        "light rum",
+                        "triple sec",
+                        "gin",
+                        "cola",
+                    ],
+                },
+                {
+                    id: "7",
+                    name: "Sazerac",
+                    images: [
+                        {
+                            formats: {
+                                large: {
+                                    ext: ".png",
+                                    url: "/uploads/large_sazerac_29d0801213.png",
+                                    hash: "large_sazerac_29d0801213",
+                                    mime: "image/png",
+                                    name: "large_sazerac.png",
+                                    path: null,
+                                    size: 1164.21,
+                                    width: 667,
+                                    height: 1000,
+                                },
+                                small: {
+                                    ext: ".png",
+                                    url: "/uploads/small_sazerac_29d0801213.png",
+                                    hash: "small_sazerac_29d0801213",
+                                    mime: "image/png",
+                                    name: "small_sazerac.png",
+                                    path: null,
+                                    size: 321.83,
+                                    width: 333,
+                                    height: 500,
+                                },
+                                medium: {
+                                    ext: ".png",
+                                    url: "/uploads/medium_sazerac_29d0801213.png",
+                                    hash: "medium_sazerac_29d0801213",
+                                    mime: "image/png",
+                                    name: "medium_sazerac.png",
+                                    path: null,
+                                    size: 684.16,
+                                    width: 500,
+                                    height: 750,
+                                },
+                                thumbnail: {
+                                    ext: ".png",
+                                    url: "/uploads/thumbnail_sazerac_29d0801213.png",
+                                    hash: "thumbnail_sazerac_29d0801213",
+                                    mime: "image/png",
+                                    name: "thumbnail_sazerac.png",
+                                    path: null,
+                                    size: 35.74,
+                                    width: 104,
+                                    height: 156,
+                                },
+                            },
+                        },
+                    ],
+                    ingredients: [
+                        "whiskey",
+                        "simple syrup",
+                        "dashes Peychaud's bitters",
+                        "Absinthe",
                     ],
                 },
             ],
