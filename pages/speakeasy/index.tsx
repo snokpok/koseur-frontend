@@ -11,6 +11,8 @@ import { Drink, Bar } from "../../commons/graphql/schema-interfaces";
 import { imagePath } from "../../commons/utils/image-path.function";
 import { Parallax } from "react-parallax";
 import Carousel from "nuka-carousel";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { IoIosArrowDropdown } from "react-icons/io";
 
 export interface BarPageProps {
     data: {
@@ -20,15 +22,21 @@ export interface BarPageProps {
 
 export default function BarPage({ data: { bar } }: BarPageProps) {
     return (
-        <div className={styles.ProfileContainer}>
+        <div className={styles.ProfileContainer} id="FrontPage">
             <Parallax bgImage="/background.jpeg" strength={300} blur={{min: -5, max: 5}}>
                 <div className={styles.ProfileSection}>
                     <Header barName={bar.name!} />
                     <p className={styles.BgText}>{bar.contents.BgText}</p>
+
+                    <div className={styles.ArrowIconContainer}>
+                        <AnchorLink href="#target">
+                            <IoIosArrowDropdown className={styles.ArrowIcon} />
+                        </AnchorLink>
+                    </div>
                 </div>
             </Parallax>
 
-            <div className={styles.ProfileSectionOther}>
+            <div className={styles.ProfileSectionOther} id="target">
                 <div className={styles.AboutUs}>
                     {/* <Image
                         // loader={ImageLoaderFunction}
@@ -125,11 +133,13 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
 
             <div className={styles.Footer}>
                 <div style={{float: "left"}}>
-                    <Image 
-                        src={"/21gam-logo.jpg"}
-                        width={80}
-                        height={80}
-                    />
+                    <AnchorLink href="#FrontPage">
+                        <Image 
+                            src={"/21gam-logo.jpg"}
+                            width={80}
+                            height={80}
+                        />
+                    </AnchorLink>
                 </div>
 
                 <div 
@@ -141,7 +151,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                         textAlign: "center",
                     }}
                 >
-                    <a href="https://www.google.com/maps/place/21Gam/@21.0200633,105.846649,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ab391c803bb3:0xa46cb5a3e8f7e5e4!8m2!3d21.0200583!4d105.8488377">
+                    <a href="https://www.google.com/maps/place/21Gam/@21.0200633,105.846649,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ab391c803bb3:0xa46cb5a3e8f7e5e4!8m2!3d21.0200583!4d105.8488377" target="_blank">
                         26 Truong Han Sieu, Tran Hung Dao, Hoan Kiem, Ha Noi                
                     </a>
                 </div>
