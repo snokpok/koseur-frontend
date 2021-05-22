@@ -21,8 +21,8 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
             <div className={styles.ProfileSection}>
                 <div className={styles.BgWrap}>
                     <FadeInImage
-                        loader={ImageLoaderFunction}
-                        src={bar?.images![0]!.formats.large.url ?? null}
+                        // loader={ImageLoaderFunction}
+                        src={"/background.jpeg"}
                         layout="fill"
                         objectFit="cover"
                         quality={100}
@@ -34,12 +34,16 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
 
             <div className={styles.ProfileSectionOther}>
                 <div className={styles.AboutUs}>
-                    <Image
-                        loader={ImageLoaderFunction}
-                        src={bar.images![1]!.formats.large.url}
+                    {/* <Image
+                        // loader={ImageLoaderFunction}
+                        src={"/bartender.jpg"}
                         width={600}
                         height={900}
-                    />
+                    /> */}
+
+                    <video autoPlay loop muted className={styles.BackgroundVideo}>
+                        <source src="/21-gam.mp4" type="video/mp4" />
+                    </video>
 
                     <div className={styles.AboutUsTitle}>
                         <p>{bar.contents.AboutUs.AboutUsTitle[0]}</p>
@@ -73,8 +77,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                     bar.drinks!.map((drink) => (
                         <div className={styles.DrinkTemplate}>
                             <Image
-                                loader={ImageLoaderFunction}
-                                src={drink!.images![0]!.formats.large.url}
+                                src={"/drink_2.jpg"}
                                 width={800}
                                 height={550}
                             />
@@ -86,7 +89,11 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                                 }
                             >
                                 <p>{drink?.name}</p>
+                                <p style={{fontSize: "0.7em", marginTop: "10%"}}>Base | Type | Strength</p>
+                                <p style={{color: "#91760d", fontSize: "0.7em"}}>Gin  Summer  15%</p>
                             </div>
+
+                            
                         </div>
                     ))}
             </div>
