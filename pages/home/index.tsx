@@ -101,7 +101,7 @@ export default function HomePage({ data, city }: HomePageProps) {
             >
                 <div className={styles.IntroHomePage}>
                     <div className={styles.Locale}>Hanoi</div>
-                    <div className={styles.Locale}>HCMC</div>
+                    <div className={styles.Locale}>Saigon</div>
                 </div>
                 <CategorySection
                     categories={data?.categories ?? dataHome.data.categories}

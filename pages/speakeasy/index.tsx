@@ -90,8 +90,14 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                                 }
                             >
                                 <p>{drink?.name}</p>
-                                <p style={{fontSize: "0.7em", marginTop: "10%"}}>Base | Type | Strength</p>
-                                <p style={{color: "#91760d", fontSize: "0.7em"}}>Gin  Summer  15%</p>
+                                <div className={styles.GridContainer}>
+                                   <div className={styles.GridItem}>Base</div>
+                                   <div className={styles.GridItem}>Type</div>
+                                   <div className={styles.GridItem}>Strength</div>
+                                   <div className={styles.GridItem} style={{color: "#AE6F10", fontSize: "0.8em"}}>Gin</div>
+                                   <div className={styles.GridItem} style={{color: "#AE6F10", fontSize: "0.8em"}}>Summer</div>
+                                   <div className={styles.GridItem} style={{color: "#AE6F10", fontSize: "0.8em"}}>15%</div>
+                                </div>
                             </div>
 
                             
