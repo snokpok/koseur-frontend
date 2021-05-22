@@ -85,7 +85,7 @@ export default function HomePage({ data, city }: HomePageProps) {
             <Parallax bgImage="/homepage.jpg" strength={500} blur={{min: -5, max: 5}}>
                 <div className={styles.HomeSection} ref={homeSectionRef}>
                     <Header barName={"KOSEUR"} />
-                    <p className={styles.BgText}>{"KOSEUR TOGETHER"}</p>
+                    <p className={styles.BgText} style={{textShadow: "15px 10px 10px #000000"}}>{"KOSEUR TOGETHER"}</p>
                     <div className={styles.ArrowIconContainer}>
                         <AnchorLink href="#locale">
                             <IoIosArrowDropdown className={styles.ArrowIcon} />

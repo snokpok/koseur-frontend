@@ -35,28 +35,40 @@
     text-align: center
 
 .Drink
+    width: 100%
+    background-color: grey
     margin-top: 400px
     .DrinkTitle
-        width: 900px
+        width: 60%
         margin-top: 200px
         text-align: center
         font-size: 2em
-        float: left
+        float: right
 
 .DrinkTemplate
     width: 90%
     margin: 7% auto
     border: 1px solid white
+    &:hover
+        .DrinkDescription
+            opacity: 1
+            transition: all 0.8s
+        .GridContainer
+            transition: all 1s
+            transform: scale(0.7)
     .DrinkTextRight
         @include mixins.drinkAlternating(right)
     .DrinkTextLeft
         @include mixins.drinkAlternating(left)
-    .Description
-        float: right
-        font-size: 1.5em
-        text-align: center
-        background-color: grey
-    .GridContainer     
+    .DrinkDescription
+        transition: all 0.8s
+        font-size: 0.6em
+        width: 80%
+        margin: auto
+        // position: absolute
+        opacity: 0
+    .GridContainer
+        transition: all 1s     
         display: grid
         width: 80%
         margin: auto
@@ -64,8 +76,6 @@
         padding: 10px
         font-size: 0.9em
         .GridItem
-            // background-color: rgba(255, 255, 255, 0.8)
             border-right: 1px solid rgba(255, 255, 255, 0.8)
             padding: 20px
-            // font-size: 30px
             text-align: center

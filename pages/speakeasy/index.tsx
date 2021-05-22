@@ -9,6 +9,7 @@ import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
 import { barPageData } from "../../commons/mock-data/bar-page";
 import { Drink, Bar } from "../../commons/graphql/schema-interfaces";
 import { imagePath } from "../../commons/utils/image-path.function";
+import { Parallax } from "react-parallax";
 
 export interface BarPageProps {
     data: {
@@ -19,19 +20,12 @@ export interface BarPageProps {
 export default function BarPage({ data: { bar } }: BarPageProps) {
     return (
         <div className={styles.ProfileContainer}>
-            <div className={styles.ProfileSection}>
-                <div className={styles.BgWrap}>
-                    <FadeInImage
-                        // loader={ImageLoaderFunction}
-                        src={"/background.jpeg"}
-                        layout="fill"
-                        objectFit="cover"
-                        quality={100}
-                    />
+            <Parallax bgImage="/background.jpeg" strength={300} blur={{min: -5, max: 5}}>
+                <div className={styles.ProfileSection}>
+                    <Header barName={bar.name!} />
+                    <p className={styles.BgText}>{bar.contents.BgText}</p>
                 </div>
-                <Header barName={bar.name!} />
-                <p className={styles.BgText}>{bar.contents.BgText}</p>
-            </div>
+            </Parallax>
 
             <div className={styles.ProfileSectionOther}>
                 <div className={styles.AboutUs}>
@@ -56,7 +50,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                     </div>
 
                     <div className={styles.Drink}>
-                        <Image src="/drink_1.jpg" width={600} height={900} />
+                        <Parallax bgImage="/drink_1.jpg" strength={350} blur={{min: -5, max: 5}} style={{width: "40%", height: 900, float: "right"}} />
 
                         <div className={styles.DrinkTitle}>
                             <p>{bar.contents.Drink.DrinkTitle}</p>
@@ -90,6 +84,10 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                                 }
                             >
                                 <p>{drink?.name}</p>
+
+                                <p className={styles.DrinkDescription}>A sultry, spicy & smoky mezcal margarita with TCS signature agave blend - tequila, mezcal & sotol;
+                                 grapefruit, hibiscus, warm spices, tamarind, & chili salt.</p>
+
                                 <div className={styles.GridContainer}>
                                    <div className={styles.GridItem}>Base</div>
                                    <div className={styles.GridItem}>Type</div>
