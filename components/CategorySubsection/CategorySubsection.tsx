@@ -1,30 +1,57 @@
-import React from "react";
+import React, { ReactElement, useCallback, useState } from "react";
 import styles from "./CategorySubsection.module.sass";
-import CategoryItem, { ICategoryItem } from "../CategoryItem/CategoryItem";
-import ScrollContainer from 'react-indiana-drag-scroll';
+import CategoryItem from "../CategoryItem/CategoryItem";
+import { Bar, Category, Maybe } from "../../commons/graphql/schema-interfaces";
+import Carousel from "nuka-carousel";
+import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
+import { IconType } from "react-icons/lib";
 
-// ICategorySubsection
-export interface ICategorySubsection {
-    name: string;
-    bars: ICategoryItem[];
-}
+export default function CategorySubsection(props: { category: Category }) {
+    const handleCenterControl = (
+        slideCallback: () => void,
+        controlElement: JSX.Element
+    ) => {
+        if (props.category!.bars!.length > 2)
+            return (
+                <div
+                    style={{ fontSize: 30, cursor: "pointer" }}
+                    onClick={slideCallback}
+                >
+                    {controlElement}
+                </div>
+            );
+    };
 
-export default function CategorySubsection(props: ICategorySubsection) {
-    
     return (
         <div className={styles.CategorySubsection}>
-            <div className={styles.Header}>{props.name}</div>
-            <ScrollContainer className={styles.Items} horizontal = {true} vertical={false} hideScrollbars={true}>
-                {props.bars.map((item: ICategoryItem) => (
-                            <CategoryItem {...item} />
-                        ))}
-            </ScrollContainer>
-            {/* old scroll
-            <div className={styles.Items}>
-                    {props.bars.map((item: ICategoryItem) => (
-                        <CategoryItem {...item} />
-                    ))}
-            </div> */}
+            <div className={styles.Header}>{props.category.name}</div>
+
+            <Carousel
+                disableEdgeSwiping={true}
+                slidesToShow={2}
+                dragging={props.category!.bars!.length > 2}
+                cellSpacing={50}
+                renderBottomCenterControls={null}
+                renderCenterRightControls={({ nextSlide }) =>
+                    handleCenterControl(
+                        nextSlide,
+                        <IoIosArrowDropright className={styles.ArrowIcon} />
+                    )
+                }
+                renderCenterLeftControls={({ previousSlide }) =>
+                    handleCenterControl(
+                        previousSlide,
+                        <IoIosArrowDropleft className={styles.ArrowIcon} />
+                    )
+                }
+                style={{
+                    overflow: "auto",
+                }}
+            >
+                {props.category!.bars!.map((bar: Maybe<Bar>) => (
+                    <CategoryItem bar={bar as Bar} />
+                ))}
+            </Carousel>
         </div>
     );
 }

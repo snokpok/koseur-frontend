@@ -1,50 +1,57 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CategoryItem.module.sass";
-import Image from 'next/image'
+import Image from "next/image";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
+import { Bar } from "../../commons/graphql/schema-interfaces";
+import FadeInImage from "../FadeInImage/FadeInImage";
 
-export interface ICategoryItem {
-    name: string;
-    description: string;
-    logo?: {
-        formats: {
-            thumbnail: {
-                url: string
-                width: number
-                height: number
-            }
-        }
-    }
-}
-
-export default function CategoryItem(props: ICategoryItem) {
-    const ITEM_SIZE_RATIO = 7/8
-    const [rightWidth, setRightWidth] 
-        = useState<number>(0)
-    const [rightHeight, setRightHeight] 
-        = useState<number>(0)
+export default function CategoryItem({ bar }: { bar: Bar }) {
+    const ITEM_SIZE_RATIO = 9 / 8;
+    const [rightWidth, setRightWidth] = useState<number>(0);
+    const [rightHeight, setRightHeight] = useState<number>(0);
+    const imagePath = (size: string) =>
+        `/${bar.images![0]!.formats[size].name.split(`${size}_`)[1]}`;
+    console.log(imagePath);
 
     useEffect(() => {
-        if (props.logo) {
-            setRightWidth(props.logo.formats.thumbnail.width * ITEM_SIZE_RATIO)
-            setRightHeight(props.logo.formats.thumbnail.height * ITEM_SIZE_RATIO)
+        if (bar.logo) {
+            setRightWidth(bar.logo.formats.thumbnail.width * ITEM_SIZE_RATIO);
+            setRightHeight(bar.logo.formats.thumbnail.height * ITEM_SIZE_RATIO);
         }
-    })
+    });
 
     return (
+        <div
+            className={styles.BarCover}
+            style={{
+                width: "100%",
+                backgroundImage: `url(${imagePath("small")})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+        >
             <div className={styles.CategoryItem}>
-                <div>{props.name}</div>
-                <div>{props.description}</div>
-                {
-                    props.logo
-                        ? (
+                <div className={styles.BarInfo}>
+                    <div className={styles.BarInfoName}>{bar.name}</div>
+                    <hr className={styles.BarInfoDivider} />
+                    <div className={styles.BarInfoDes}>{bar.description}</div>
+                </div>
+                <div className={styles.LogoContainer}>
+                    {bar.logo ? (
                         <Image
-                            loader={ImageLoaderFunction}
-                            src={props.logo.formats.thumbnail.url}
+                            //loader={ImageLoaderFunction}
+                            src={`/${
+                                bar.logo.formats.thumbnail.name.split(
+                                    "thumbnail_"
+                                )[1]
+                            }`}
                             width={rightWidth}
                             height={rightHeight}
-                        />) : null
-                }
+                            className={styles.Logo}
+                        />
+                    ) : null}
+                </div>
             </div>
+        </div>
     );
 }

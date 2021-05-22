@@ -2,6 +2,10 @@
 @import '../pages/LandingPage.module'
 @import '../pages/speakeasy/BarPage.module'
 @import '../pages/home/HomePage.module'
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap')
 
 .BgWrap
     width: 100vw
@@ -9,18 +13,22 @@
     position: absolute
     overflow: hidden
     z-index: 0
-
+    animation: fade-in
+    animation-duration: 2s
 
 .BgText
     position: relative
-    margin: 0
-    font-size: 4rem
+    margin-top: -100px
+    // margin: 0px
+    font-size: 5rem
     line-height: 5rem
     text-align: center
     padding-top: 20%
+    // font-family: -apple-system, "Monoton"
+    font-family: -apple-system, "Abril Fatface"
 
 .Logo
-    position: fixed
+    // position: fixed
     margin-left: auto
     margin-right: auto
     top: 3%

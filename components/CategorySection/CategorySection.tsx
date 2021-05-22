@@ -1,18 +1,14 @@
 import React from "react";
+import { Category } from "../../commons/graphql/schema-interfaces";
+import CategorySubsection from "../CategorySubsection/CategorySubsection";
 import styles from "./CategorySection.module.sass";
-import CategorySubsection, {
-    ICategorySubsection,
-} from "../CategorySubsection/CategorySubsection";
 
-
-export type TCategorySection = ICategorySubsection[];
-
-export default function CategorySection(props: { data: TCategorySection }) {
+export default function CategorySection(props: { categories: Category[] }) {
     return (
-            <div className={styles.CategorySection}>
-                {props.data.map((subsectionData: ICategorySubsection) => (
-                    <CategorySubsection {...subsectionData} />
-                ))}
-            </div>
+        <div className={styles.CategorySection}>
+            {props.categories.map((category: Category) => (
+                <CategorySubsection category={category} />
+            ))}
+        </div>
     );
 }
