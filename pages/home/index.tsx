@@ -24,6 +24,7 @@ import { useRouter } from "next/router";
 import { IoIosArrowDropdown } from "react-icons/io";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { Parallax } from "react-parallax";
+import { AiOutlineMinus } from "react-icons/ai";
 
 export interface HomePageProps {
     data: {
@@ -99,10 +100,15 @@ export default function HomePage({ data, city }: HomePageProps) {
                 className={styles.HomePage}
                 ref={categorySection}
             >
-                <div className={styles.IntroHomePage}>
-                    <div className={styles.Locale}>Hanoi</div>
-                    <div className={styles.Locale}>Saigon</div>
+                <div className={styles.LocaleContainer}>
+                    <div className={styles.IntroHomePage}>
+                        <div className={styles.Locale}>Hanoi</div>
+                        <div className={styles.Locale}>Saigon</div>
+                    </div>
+
+                    <div className={styles.LineDecoration}></div>
                 </div>
+
                 <CategorySection
                     categories={data?.categories ?? dataHome.data.categories}
                 />

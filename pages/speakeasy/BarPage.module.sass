@@ -6,16 +6,17 @@
     font-family: -apple-system, "Poiret One" 
     .ProfileSection
         @include mixins.fullWidthHeight()
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,1) 100%)
     .ProfileSectionOther
         @include mixins.fullWidthHeight($vh: 230vh)
 
 .AboutUs
     width: 1500px
-    margin: 200px auto
+    margin: 100px auto
     .AboutUsTitle
         width: 900px
         height: 500px
-        margin-top: 200px
+        margin-top: 100px
         text-align: center
         font-size: 2em
         float: right
@@ -26,7 +27,7 @@
         font-size: 0.7em
     .BackgroundVideo
         width: 40%
-        margin-top: 200px
+        margin-top: 100px
 
 .BarConcept
     width: 100%
@@ -55,7 +56,7 @@
             transition: all 0.8s
         .GridContainer
             transition: all 1s
-            transform: scale(0.8)
+            transform: scale(0.9)
         .DrinkImg
             transition: all 1s
             transform: scale(1.2)
@@ -102,6 +103,6 @@
 
 .Footer
     width: 100%
-    height: 80px
+    height: 80p
     margin-top: 2%
     background-color: rgba(37, 37, 37, 0.5)
