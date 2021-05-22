@@ -10,6 +10,7 @@ import { barPageData } from "../../commons/mock-data/bar-page";
 import { Drink, Bar } from "../../commons/graphql/schema-interfaces";
 import { imagePath } from "../../commons/utils/image-path.function";
 import { Parallax } from "react-parallax";
+import Carousel from "nuka-carousel";
 
 export interface BarPageProps {
     data: {
@@ -72,6 +73,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                     bar.drinks!.map((drink) => (
                         <div className={styles.DrinkTemplate}>
                             <Image
+                                className={styles.DrinkImg}
                                 src={"/drink_2.jpg"}
                                 width={800}
                                 height={550}
@@ -101,6 +103,76 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                             
                         </div>
                     ))}
+                
+                <div className={styles.Tag}>
+                    <p>Tag Along</p>
+                    <a href="https://www.instagram.com/21gamofhanoi/" style={{textDecoration: "underline", fontWeight: "bold"}}>@KoseurTogether</a>
+                </div>
+
+                <Carousel 
+                    style={{width: "100%", height: "400px"}}
+                    slidesToShow={5}
+                    renderCenterRightControls={null}
+                    renderCenterLeftControls={null}
+                >
+                    <img src="/21-gam-1.jpg" className={styles.FooterImg}/>
+                    <img src="/21-gam-2.jpg" className={styles.FooterImg}/>
+                    <img src="/21-gam-3.jpg" className={styles.FooterImg}/>
+                    <img src="/21-gam-4.jpg" className={styles.FooterImg}/>
+                    <img src="/21-gam-5.jpg" className={styles.FooterImg}/>
+                 </Carousel>
+            </div>
+
+            <div className={styles.Footer}>
+                <div style={{float: "left"}}>
+                    <Image 
+                        src={"/21gam-logo.jpg"}
+                        width={80}
+                        height={80}
+                    />
+                </div>
+
+                <div 
+                    style={{
+                        float: "left", 
+                        width: "50%", 
+                        height: "80px", 
+                        lineHeight: "80px", 
+                        textAlign: "center",
+                    }}
+                >
+                    <a href="https://www.google.com/maps/place/21Gam/@21.0200633,105.846649,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ab391c803bb3:0xa46cb5a3e8f7e5e4!8m2!3d21.0200583!4d105.8488377">
+                        26 Truong Han Sieu, Tran Hung Dao, Hoan Kiem, Ha Noi                
+                    </a>
+                </div>
+
+                <div 
+                    style={{
+                        float: "left", 
+                        width: "10%", 
+                        height: "80px", 
+                        lineHeight: "80px", 
+                        textAlign: "center",
+                    }}
+                >
+                    <a href="tel:+84988111121">
+                        +84 988.111.121              
+                    </a>
+                </div>
+
+                <div 
+                    style={{
+                        float: "left", 
+                        width: "35.5%", 
+                        height: "80px", 
+                        lineHeight: "80px", 
+                        textAlign: "center",
+                    }}
+                >
+                    <a href="tel:+84988111121">
+                        Social Media          
+                    </a>
+                </div>
             </div>
         </div>
     );
