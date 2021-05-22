@@ -8,6 +8,7 @@ import { getBarById } from "../../commons/graphql/qvs";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
 import { barPageData } from "../../commons/mock-data/bar-page";
 import { Drink, Bar } from "../../commons/graphql/schema-interfaces";
+import { imagePath } from "../../commons/utils/image-path.function";
 
 export interface BarPageProps {
     data: {
@@ -21,8 +22,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
             <div className={styles.ProfileSection}>
                 <div className={styles.BgWrap}>
                     <FadeInImage
-                        loader={ImageLoaderFunction}
-                        src={bar?.images![0]!.formats.large.url ?? null}
+                        src={"/background.jpeg"}
                         layout="fill"
                         objectFit="cover"
                         quality={100}
@@ -72,12 +72,17 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                 {bar.drinks &&
                     bar.drinks!.map((drink) => (
                         <div className={styles.DrinkTemplate}>
-                            <Image
-                                loader={ImageLoaderFunction}
-                                src={drink!.images![0]!.formats.large.url}
-                                width={800}
-                                height={550}
-                            />
+                            {drink!.images!.length > 0 ? (
+                                <Image
+                                    //loader={ImageLoaderFunction}
+                                    src={imagePath(
+                                        drink as Partial<Drink>,
+                                        "large"
+                                    )}
+                                    width={800}
+                                    height={550}
+                                />
+                            ) : null}
                             <div
                                 className={
                                     Number.parseInt(drink?.id ?? "0") % 2 == 0
