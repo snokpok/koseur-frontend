@@ -34,9 +34,6 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
                 <div className={styles.BarInfo}>
                     <div className={styles.BarInfoName}>{bar.name}</div>
                     <hr className={styles.BarInfoDivider} />
-                    <a className={styles.BarLink} href="http://localhost:8080">
-                        a link
-                    </a>
                     <div className={styles.BarInfoDes}>{bar.description}</div>
                 </div>
                 <div className={styles.LogoContainer}>

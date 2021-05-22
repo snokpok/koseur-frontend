@@ -1,4 +1,5 @@
 @use "../../styles/mixins.module" as mixins
+
 .BarCover
     transition: all 0.3s ease-in-out
     &:hover
@@ -24,22 +25,28 @@
             opacity: 1
             transform: translateX(-80%)
         .LogoContainer
-            transform: translateX(100%)
+            transform: translateX(90%)
             transition: all 0.5s ease-in-out
         
     .BarInfo
         @include mixins.flex($dir: column, $jc: flex-start, $ai: flex-start)
+        width: 30%
         opacity: 0
         transition: all 0.5s ease-in-out
+        .BarInfoName
+            font-size: 2.5rem
+        .BarInfoDes
+            opacity: 0.7
+            font-size: 1rem
         .BarInfoDivider
             color: white
             width: 100%
-    .Logo
-        border-radius: 50%
     
     .LogoContainer
         transition: all 0.5s ease-in-out
         position: absolute
+        .Logo
+            border-radius: 50%
     
 
         
