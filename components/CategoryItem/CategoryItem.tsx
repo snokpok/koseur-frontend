@@ -4,14 +4,12 @@ import Image from "next/image";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
 import { Bar } from "../../commons/graphql/schema-interfaces";
 import FadeInImage from "../FadeInImage/FadeInImage";
+import { imagePath } from "../../commons/utils/image-path.function";
 
 export default function CategoryItem({ bar }: { bar: Bar }) {
     const ITEM_SIZE_RATIO = 9 / 8;
     const [rightWidth, setRightWidth] = useState<number>(0);
     const [rightHeight, setRightHeight] = useState<number>(0);
-    const imagePath = (size: string) =>
-        `/${bar.images![0]!.formats[size].name.split(`${size}_`)[1]}`;
-    console.log(imagePath);
 
     useEffect(() => {
         if (bar.logo) {
@@ -25,7 +23,7 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
             className={styles.BarCover}
             style={{
                 width: "100%",
-                backgroundImage: `url(${imagePath("small")})`,
+                backgroundImage: `url(${imagePath(bar, "small")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}

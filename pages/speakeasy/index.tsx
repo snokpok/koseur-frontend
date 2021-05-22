@@ -8,6 +8,7 @@ import { getBarById } from "../../commons/graphql/qvs";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
 import { barPageData } from "../../commons/mock-data/bar-page";
 import { Drink, Bar } from "../../commons/graphql/schema-interfaces";
+import { imagePath } from "../../commons/utils/image-path.function";
 
 export interface BarPageProps {
     data: {
