@@ -44,13 +44,6 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
 
             <div className={styles.ProfileSectionOther} id="target">
                 <div className={styles.AboutUs}>
-                    {/* <Image
-                        // loader={ImageLoaderFunction}
-                        src={"/bartender.jpg"}
-                        width={600}
-                        height={900}
-                    /> */}
-
                     <video
                         autoPlay
                         loop
