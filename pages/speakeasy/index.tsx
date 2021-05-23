@@ -123,7 +123,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                 >
                     {[...Array(5).keys()].map((i) => (
                         <img
-                            src={`/21-gam-${i}.jpg`}
+                            src={`/21-gam-${i + 1}.jpg`}
                             className={styles.FooterImg}
                         />
                     ))}
