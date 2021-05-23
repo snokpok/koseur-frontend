@@ -26,8 +26,6 @@ export default function Header(props: HeaderProps) {
                         </a>
                     </Link>
                 </div>
-
-                <Navbar dropdownItems={[{ name: "MENU", route: "/menu" }]} />
             </div>
         </>
     );
