@@ -1,0 +1,64 @@
+@use '../../styles/mixins.module' as mixins
+@use '../../styles/variables.module.sass' as variables
+
+.BarConcept
+    width: 100%
+    margin: 0% auto
+    font-size: 3em
+    text-align: center
+
+.Drink
+    width: 100%
+    background-color: grey
+    margin-top: 400px
+    .DrinkTitle
+        width: 60%
+        margin-top: 200px
+        text-align: center
+        font-size: 2em
+        float: right
+
+.DrinkTemplate
+    width: 90%
+    margin: 7% auto
+    border: 1px solid white
+    &:hover
+        .DrinkDescription
+            opacity: 1
+            transition: all 0.8s
+        .GridContainer
+            transition: all 1s
+            opacity: 0
+        .DrinkImg
+            transition: all 1s
+            transform: scale(1.2)
+    .DrinkImg
+        transition: all 1s
+    .DrinkTextRight
+        @include mixins.drinkAlternating(right)
+    .DrinkTextLeft
+        @include mixins.drinkAlternating(left)
+    .DrinkDescription
+        transition: all 0.8s
+        font-size: 0.6em
+        width: 80%
+        margin: auto
+        opacity: 0
+    .GridContainer
+        transition: all 1s
+        display: grid
+        width: 80%
+        margin: auto
+        grid-template-columns: 200px 200px 200px
+        padding: 10px
+        font-size: 0.9em
+        .GridItem
+            border-right: 1px solid rgba(255, 255, 255, 0.8)
+            padding: 20px
+            text-align: center
+            color: variables.$koseur-gold
+            font-size: 0.8em
+            &__Title
+                @extend .GridItem
+                color: white
+

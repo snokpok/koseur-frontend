@@ -4,7 +4,6 @@ import CategoryItem from "../CategoryItem/CategoryItem";
 import { Bar, Category, Maybe } from "../../commons/graphql/schema-interfaces";
 import Carousel from "nuka-carousel";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
-import { IconType } from "react-icons/lib";
 
 export default function CategorySubsection(props: { category: Category }) {
     const handleCenterControl = (
