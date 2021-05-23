@@ -1,9 +1,28 @@
 @use "../../styles/mixins.module" as mixins
+@use "../../styles/variables.module" as variables
 
 .BarCover
     transition: all 0.3s ease-in-out
     &:hover
         transform: scale(1.05)
+
+@media screen and (max-width: variables.$ip678p-w)
+    .BarCover
+        animation: none !important
+        @include mixins.flex()
+    .CategoryItem
+        animation: none !important
+        transform: scale(1)
+        @include mixins.blurBrowserCrossComp(0)
+        &:hover
+            .Logo
+                animation: none !important
+                transform: translateX(0)
+    .LogoContainer
+        animation: none !important
+
+    
+
 .CategoryItem
     @include mixins.fullWidthHeight($vw: 50vw, $vh: 55vh)
     @include mixins.flex($dir: row, $jc: space-around, $ai: center)
@@ -11,7 +30,7 @@
     flex-shrink: 0
     flex-basis: 50vw
     margin: 1rem 0
-    cursor: grab
+    cursor: pointer
     transition: all 0.6s ease-in-out
     font-size: 1.3em
     position: relative

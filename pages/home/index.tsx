@@ -38,7 +38,7 @@ export default function HomePage({ data, city }: HomePageProps) {
     const [dataHome, setDataHome] = useState<HomePageProps>({
         data: { categories: [] },
     });
-    const [scrollOffset, setScrollOffset] = useState<number>(0)
+    const [scrollOffset, setScrollOffset] = useState<number>(0);
     const homeSectionRef: React.RefObject<HTMLDivElement> = useRef(null);
     const categorySection: React.RefObject<HTMLDivElement> = useRef(null);
     const router = useRouter();
@@ -83,12 +83,21 @@ export default function HomePage({ data, city }: HomePageProps) {
                 <link rel="stylesheet" />
             </Head>
 
-            <Parallax bgImage="/homepage.jpg" strength={500} blur={{min: -5, max: 5}}>
+            <Parallax
+                bgImage="/homepage.jpg"
+                strength={500}
+                blur={{ min: -5, max: 5 }}
+            >
                 <div className={styles.HomeSection} ref={homeSectionRef}>
                     <Header barName={"KOSEUR"} />
-                    <p className={styles.BgText} style={{textShadow: "15px 10px 10px #000000"}}>{"KOSEUR TOGETHER"}</p>
+                    <div
+                        className={styles.BgText}
+                        style={{ textShadow: "15px 10px 10px #000000" }}
+                    >
+                        {"KOSEUR TOGETHER"}
+                    </div>
                     <div className={styles.ArrowIconContainer}>
-                        <AnchorLink href="#locale">
+                        <AnchorLink href="#category-section">
                             <IoIosArrowDropdown className={styles.ArrowIcon} />
                         </AnchorLink>
                     </div>
@@ -96,19 +105,10 @@ export default function HomePage({ data, city }: HomePageProps) {
             </Parallax>
 
             <section
-                id="locale"
                 className={styles.HomePage}
                 ref={categorySection}
+                id="category-section"
             >
-                <div className={styles.LocaleContainer}>
-                    <div className={styles.IntroHomePage}>
-                        <div className={styles.Locale}>Hanoi</div>
-                        <div className={styles.Locale}>Saigon</div>
-                    </div>
-
-                    <div className={styles.LineDecoration}></div>
-                </div>
-
                 <CategorySection
                     categories={data?.categories ?? dataHome.data.categories}
                 />

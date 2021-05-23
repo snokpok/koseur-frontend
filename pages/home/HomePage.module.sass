@@ -13,31 +13,6 @@ $localeBarHeight: 10vh
         height: $localeBarHeight
         margin-top: 5%
         @include mixins.flex($dir: row)
-        .Locale
-            height: 50%
-            background-color: black
-            border-bottom: 1px solid black
-            transition: all 0.3s
-            font-size: 1.5em
-            margin: 10%
-            @include mixins.flex($dir: row)
-            &:hover
-                color: fonts.$koseur-gold
-                border-bottom: 1px solid fonts.$koseur-gold
-                line-height: 1.5em
-                cursor: pointer
-
-    .LocaleContainer
-        .LineDecoration
-            width: 12%
-            height: 1px
-            margin-left: auto
-            margin-right: auto
-            background-color: white
-        &:hover
-            .LineDecoration
-                transition: all 1s
-                transform: rotate(-360deg)
     .CategoriesSection
         @include mixins.fullWidthHeight()
         z-index: 0
