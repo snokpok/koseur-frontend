@@ -1,4 +1,5 @@
 @use './../styles/mixins.module' as mixins
+@use '../styles/variables.module.sass' as variables
 @import '../pages/LandingPage.module'
 @import '../pages/speakeasy/BarPage.module'
 @import '../pages/home/HomePage.module'
@@ -8,8 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap')
 
 .BgWrap
-    width: 100vw
-    height: 100vh
+    @include mixins.fullWidthHeight()
     position: absolute
     overflow: hidden
     z-index: 0
@@ -17,21 +17,20 @@
     animation-duration: 2s
 
 .BgText
-    position: relative
-    margin-top: -150px
-    // margin: 0px
     font-size: 5rem
     line-height: 5rem
     text-align: center
-    padding-top: 20%
-    // font-family: -apple-system, "Monoton"
+    padding-top: 5%
     font-family: -apple-system, "Poiret One"
 
 .Logo
-    // position: fixed
     margin-left: auto
     margin-right: auto
     top: 3%
     left: 46vw
     animation: fadeIn
     animation-duration: 2s
+
+@media screen and (max-width: variables.$ip678p-w) 
+    .BgText
+        font-size: 3rem

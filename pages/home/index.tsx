@@ -90,14 +90,14 @@ export default function HomePage({ data, city }: HomePageProps) {
             >
                 <div className={styles.HomeSection} ref={homeSectionRef}>
                     <Header barName={"KOSEUR"} />
-                    <p
+                    <div
                         className={styles.BgText}
                         style={{ textShadow: "15px 10px 10px #000000" }}
                     >
                         {"KOSEUR TOGETHER"}
-                    </p>
+                    </div>
                     <div className={styles.ArrowIconContainer}>
-                        <AnchorLink href="#locale">
+                        <AnchorLink href="#category-section">
                             <IoIosArrowDropdown className={styles.ArrowIcon} />
                         </AnchorLink>
                     </div>
@@ -105,9 +105,9 @@ export default function HomePage({ data, city }: HomePageProps) {
             </Parallax>
 
             <section
-                id="locale"
                 className={styles.HomePage}
                 ref={categorySection}
+                id="category-section"
             >
                 <CategorySection
                     categories={data?.categories ?? dataHome.data.categories}
