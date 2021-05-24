@@ -1,0 +1,27 @@
+@use '../../styles/variables.module.sass' as variables
+@use '../../styles/mixins.module.sass' as mixins 
+@use '../Navbar/Navbar.module.sass' as navbar
+
+.BurgerOverlay
+    @include mixins.flex($jc: flex-start)
+    position: fixed
+    right: 0
+    width: 50%
+    height: 100vh
+    // background-color: rgba(0,0,0,1)
+    background-image: url('/nav-background.jpg')
+    background-position: center
+    z-index: 999
+    border-left: 1px solid white
+    transition: visibility 0s 0.2s, opacity 1s linear
+    &Hide
+        @extend .BurgerOverlay
+        opacity: 0
+        visibility: hidden
+        transition: opacity 0.5s, visibility 0s 0.2s
+    &Items
+        cursor: pointer
+        margin: 10% auto
+        @include mixins.flex($jc: center)
+        transition: visibility 0s 0.2s, opacity 1s linear
+        

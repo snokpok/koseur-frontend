@@ -3,6 +3,7 @@ import React, {
     EventHandler,
     MouseEvent,
     MouseEventHandler,
+    useContext,
     useEffect,
     useRef,
     useState,
@@ -24,7 +25,9 @@ import { useRouter } from "next/router";
 import { IoIosArrowDropdown } from "react-icons/io";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { Parallax } from "react-parallax";
-import { AiOutlineMinus } from "react-icons/ai";
+import BurgerOverlay from "../../components/BurgerOverlay/BurgerOverlay";
+import NavbarContext from "../../commons/contexts/navbar-context";
+import ScreenContext from "../../commons/contexts/screen-context";
 
 export interface HomePageProps {
     data: {
@@ -32,67 +35,50 @@ export interface HomePageProps {
     };
     city?: string;
 }
+export interface NavbarProps {
+    dropdownItems: { name: string; route: string }[];
+}
+export const navbarProps = [
+    {
+        name: "Home",
+        route: "/home",
+    },
+    {
+        name: "About us",
+        route: "/about",
+    },
+];
 
 export default function HomePage({ data, city }: HomePageProps) {
-    const sideLength = 100;
     const [dataHome, setDataHome] = useState<HomePageProps>({
         data: { categories: [] },
     });
-    const [scrollOffset, setScrollOffset] = useState<number>(0);
-    const homeSectionRef: React.RefObject<HTMLDivElement> = useRef(null);
-    const categorySection: React.RefObject<HTMLDivElement> = useRef(null);
-    const router = useRouter();
+    const screenMeta = useContext(ScreenContext);
 
+    
     useEffect(() => {
         if (!data) {
-            if (city === "Hanoi")
-                setDataHome(homePageHanoiData as HomePageProps);
-            else if (city === "HCM")
-                setDataHome(homePageHCMData as HomePageProps);
-            else setDataHome(homePageData as HomePageProps);
+            setDataHome(homePageData as HomePageProps);
         }
     }, []);
 
-    //    const handleLocalePress: (
-    //        city: string
-    //    ) => MouseEventHandler<HTMLDivElement> = (city: string) => {
-    //        return (e) => {
-    //            router.push(`/home?city=${city}`, undefined, {
-    //                scroll: false,
-    //                shallow: true,
-    //            });
-    //        };
-    //    };
-
-    // const sectionBreakpoint = 10;
-    // useEffect(() => {
-    //     window.addEventListener("scroll", () => {
-    //         const currentScrollPos = window.pageYOffset;
-    //         if (scrollOffset >= sectionBreakpoint) {
-    //             document!.querySelector("html")!.style.overflowY = "auto";
-    //         } else {
-    //             document!.querySelector("html")!.style.overflowY = "hidden";
-    //         }
-    //     });
-    // }, []);
-
     return (
-        <>
+        <div>
+            <BurgerOverlay dropdownItems={navbarProps} />
             <Head>
                 <title>Koseur | Home</title>
                 <link rel="stylesheet" />
             </Head>
-
             <Parallax
                 bgImage="/homepage.jpg"
                 strength={500}
                 blur={{ min: -5, max: 5 }}
             >
-                <div className={styles.HomeSection} ref={homeSectionRef}>
-                    <Header barName={"KOSEUR"} />
+                <div className={styles.HomeSection}>
+                    <Header barName={"KOSEUR"} dropdownItems={navbarProps} />
                     <div
                         className={styles.BgText}
-                        style={{ textShadow: "15px 10px 10px #000000" }}
+                        style={{ textShadow: "15px 10px 10px #000000", marginTop: "10%" }}
                     >
                         {"KOSEUR TOGETHER"}
                     </div>
@@ -104,16 +90,12 @@ export default function HomePage({ data, city }: HomePageProps) {
                 </div>
             </Parallax>
 
-            <section
-                className={styles.HomePage}
-                ref={categorySection}
-                id="category-section"
-            >
+            <section className={styles.HomePage} id="category-section">
                 <CategorySection
                     categories={data?.categories ?? dataHome.data.categories}
                 />
             </section>
-        </>
+        </div>
     );
 }
 

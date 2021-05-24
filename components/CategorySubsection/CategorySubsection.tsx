@@ -1,20 +1,25 @@
-import React, { ReactElement, useCallback, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./CategorySubsection.module.sass";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import { Bar, Category, Maybe } from "../../commons/graphql/schema-interfaces";
 import Carousel from "nuka-carousel";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
-import { screenSizes } from "../../commons/utils/screen-sizes";
+import ScreenContext from "../../commons/contexts/screen-context";
 
-export default function CategorySubsection(props: { category: Category }) {
+export interface CategorySubsectionProps {
+    category: Category;
+}
+
+export default function CategorySubsection(props: CategorySubsectionProps) {
     const [numSlides, setNumSlides] = useState<number>(2);
-    const [smallScreen, setSmallScreen] = useState<boolean>(false);
+
+    const screenMeta = useContext(ScreenContext);
 
     const handleCenterControl = (
         slideCallback: () => void,
         controlElement: JSX.Element
     ) => {
-        if (props.category!.bars!.length > 2 && !smallScreen)
+        if (props.category!.bars!.length > 2 && !screenMeta.isSmall)
             return (
                 <div
                     style={{ fontSize: 30, cursor: "pointer" }}
@@ -26,9 +31,8 @@ export default function CategorySubsection(props: { category: Category }) {
     };
 
     useEffect(() => {
-        if (window.screen.availWidth < screenSizes["ip678p-w"]) {
+        if (screenMeta.isSmall) {
             setNumSlides(1);
-            setSmallScreen(true);
         }
     }, []);
 
@@ -40,6 +44,7 @@ export default function CategorySubsection(props: { category: Category }) {
                 disableEdgeSwiping={true}
                 slidesToShow={numSlides}
                 dragging={props.category!.bars!.length > 2}
+                swiping={screenMeta.isSmall}
                 cellSpacing={50}
                 renderBottomCenterControls={null}
                 renderCenterRightControls={({ nextSlide }) =>
@@ -54,14 +59,11 @@ export default function CategorySubsection(props: { category: Category }) {
                         <IoIosArrowDropleft className={styles.ArrowIcon} />
                     )
                 }
-                style={{
-                    overflow: "auto",
-                }}
             >
                 {props.category!.bars!.map((bar: Maybe<Bar>) => (
                     <CategoryItem
                         bar={bar as Bar}
-                        showDescription={!smallScreen}
+                        showDescription={!screenMeta.isSmall}
                     />
                 ))}
             </Carousel>
