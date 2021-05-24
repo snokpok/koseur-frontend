@@ -18,7 +18,7 @@ export default function Header(props: HeaderProps) {
             <div className={styles.Header}>
                 
                 <div className={styles.Logo}>
-                    <Link href="/speakeasy">
+                    <Link href="/">
                         <a>
                             <Image src="/logo.png" width={400} height={400} />
                         </a>
