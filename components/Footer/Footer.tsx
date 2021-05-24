@@ -6,13 +6,12 @@ import Image from "next/image";
 export interface FooterProps {}
 
 export default function Footer(props: FooterProps): ReactElement | null {
+    const width = 50;
     return (
         <div className={styles.Footer}>
-            {/* <div> */}
-                <AnchorLink  style={{width: 80}} href="#FrontPage">
-                    <Image className={styles.FooterLogo} src={"/21gam-logo.jpg"} width={80} height={80} layout="intrinsic"/>
-                </AnchorLink>
-            {/* </div> */}
+            <AnchorLink href="#FrontPage">
+                <img className={styles.FooterLogo} src={"/21gam-logo.jpg"}/>
+            </AnchorLink>
 
             <div className={styles.FooterInfo}>
                 <div>

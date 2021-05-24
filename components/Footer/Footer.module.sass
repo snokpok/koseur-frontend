@@ -13,5 +13,15 @@
     gap: 18px
     .FooterInfo
         @include mixins.flex($dir: column, $jc: flex-start, $ai: flex-start)
+    .FooterLogo
+        @media only screen and (max-width: variables.$ip678p-w - 1px) 
+            width: 30px
+            height: 30px
+        @media only screen and (max-width: variables.$ipad-w - 1px) and (min-width: variables.$ip678p-w)
+            width: 50px
+            height: 50px
+        @media only screen and (min-width: variables.$ipad-w) 
+            width: 80px
+            height: 80px
     
 

@@ -111,7 +111,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                 </div>
 
                 <Carousel
-                    style={{ width: "100%", height: "400px" }}
+                    className={styles.BarCarousel}
                     slidesToShow={5}
                     renderCenterRightControls={null}
                     renderCenterLeftControls={null}
