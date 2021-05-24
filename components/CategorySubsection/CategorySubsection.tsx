@@ -1,16 +1,25 @@
-import React, { ReactElement, useCallback, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./CategorySubsection.module.sass";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import { Bar, Category, Maybe } from "../../commons/graphql/schema-interfaces";
 import Carousel from "nuka-carousel";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
+import ScreenContext from "../../commons/contexts/screen-context";
 
-export default function CategorySubsection(props: { category: Category }) {
+export interface CategorySubsectionProps {
+    category: Category;
+}
+
+export default function CategorySubsection(props: CategorySubsectionProps) {
+    const [numSlides, setNumSlides] = useState<number>(2);
+
+    const screenMeta = useContext(ScreenContext);
+
     const handleCenterControl = (
         slideCallback: () => void,
         controlElement: JSX.Element
     ) => {
-        if (props.category!.bars!.length > 2)
+        if (props.category!.bars!.length > 2 && !screenMeta.isSmall)
             return (
                 <div
                     style={{ fontSize: 30, cursor: "pointer" }}
@@ -21,14 +30,21 @@ export default function CategorySubsection(props: { category: Category }) {
             );
     };
 
+    useEffect(() => {
+        if (screenMeta.isSmall) {
+            setNumSlides(1);
+        }
+    }, []);
+
     return (
         <div className={styles.CategorySubsection}>
             <div className={styles.Header}>{props.category.name}</div>
 
             <Carousel
                 disableEdgeSwiping={true}
-                slidesToShow={2}
+                slidesToShow={numSlides}
                 dragging={props.category!.bars!.length > 2}
+                swiping={screenMeta.isSmall}
                 cellSpacing={50}
                 renderBottomCenterControls={null}
                 renderCenterRightControls={({ nextSlide }) =>
@@ -43,12 +59,12 @@ export default function CategorySubsection(props: { category: Category }) {
                         <IoIosArrowDropleft className={styles.ArrowIcon} />
                     )
                 }
-                style={{
-                    overflow: "auto",
-                }}
             >
                 {props.category!.bars!.map((bar: Maybe<Bar>) => (
-                    <CategoryItem bar={bar as Bar} />
+                    <CategoryItem
+                        bar={bar as Bar}
+                        showDescription={!screenMeta.isSmall}
+                    />
                 ))}
             </Carousel>
         </div>

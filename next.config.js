@@ -15,5 +15,9 @@ module.exports = (phase, { defaultConfig }) => {
                     ? "http://localhost:1337"
                     : "",
         },
+        images: {
+            deviceSizes: [1200, 1920, 2048, 3840],
+            imageSizes: [16, 32, 48, 64, 320, 375, 414, 768, 1024],
+        }
     };
 };

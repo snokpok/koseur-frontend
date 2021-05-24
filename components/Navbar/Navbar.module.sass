@@ -1,0 +1,8 @@
+@use '../../styles/mixins.module.sass' as mixins
+
+@mixin NavbarMixin
+    width: 10%
+    height: 100px
+    float: right
+    clear: right
+    @include mixins.flex($dir: row, $jc: space-around)

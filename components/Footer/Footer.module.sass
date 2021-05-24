@@ -1,7 +1,27 @@
 @use "../../styles/mixins.module" as mixins
+@use '../../styles/variables.module.sass' as variables
+
 
 .Footer
+    @include mixins.fluid-type($min-vw: variables.$ip5-se-w, $max-vw: variables.$ipp-w, $min-font-size: 10px, $max-font-size: 25px)
+    @include mixins.flex($dir: row, $jc: flex-start, $ai: center)
     width: 100%
-    height: 80
-    margin-top: 2%
+    height: 60
+    padding-top: 2%
+    padding-bottom: 2%
     background-color: rgba(37, 37, 37, 0.5)
+    gap: 18px
+    .FooterInfo
+        @include mixins.flex($dir: column, $jc: flex-start, $ai: flex-start)
+    .FooterLogo
+        @media only screen and (max-width: variables.$ip678p-w - 1px) 
+            width: 30px
+            height: 30px
+        @media only screen and (max-width: variables.$ipad-w - 1px) and (min-width: variables.$ip678p-w)
+            width: 50px
+            height: 50px
+        @media only screen and (min-width: variables.$ipad-w) 
+            width: 80px
+            height: 80px
+    
+

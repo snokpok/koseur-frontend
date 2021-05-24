@@ -5,11 +5,21 @@ import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
 import { Bar } from "../../commons/graphql/schema-interfaces";
 import FadeInImage from "../FadeInImage/FadeInImage";
 import { imagePath } from "../../commons/utils/image-path.function";
+import { useRouter } from "next/router";
 
-export default function CategoryItem({ bar }: { bar: Bar }) {
+export interface CategoryItemProps {
+    bar: Bar;
+    showDescription: boolean;
+}
+
+export default function CategoryItem({
+    bar,
+    showDescription,
+}: CategoryItemProps) {
     const ITEM_SIZE_RATIO = 9 / 8;
     const [rightWidth, setRightWidth] = useState<number>(0);
     const [rightHeight, setRightHeight] = useState<number>(0);
+    const router = useRouter();
 
     useEffect(() => {
         if (bar.logo) {
@@ -27,14 +37,28 @@ export default function CategoryItem({ bar }: { bar: Bar }) {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
+            onClick={() => router.push("/speakeasy")}
         >
             <div className={styles.CategoryItem}>
-                <div className={styles.BarInfo}>
-                    <div className={styles.BarInfoName}>{bar.name}</div>
-                    <hr className={styles.BarInfoDivider} />
-                    <div className={styles.BarInfoDes}>{bar.description}</div>
-                </div>
-                <div className={styles.LogoContainer}>
+                {showDescription ? (
+                    <div className={styles.BarInfo}>
+                        <div className={styles.BarInfoName}>{bar.name}</div>
+                        <hr className={styles.BarInfoDivider} />
+                        <div className={styles.BarInfoDes}>
+                            {bar.description}
+                        </div>
+                    </div>
+                ) : null}
+                <div
+                    className={styles.LogoContainer}
+                    style={
+                        showDescription
+                            ? {
+                                  animation: "none !important",
+                              }
+                            : {}
+                    }
+                >
                     {bar.logo ? (
                         <Image
                             //loader={ImageLoaderFunction}
