@@ -48,11 +48,9 @@ export default function Menu({
                             <div className={styles.GridContainer}>
 
                                 {Object.keys(drinkAttributes).map((attr) => (
-                                    <>
-                                        <div className={styles.GridItem__Title}>
-                                            {attr}
-                                        </div>
-                                    </>
+                                    <div className={styles.GridItem__Title}>
+                                        {attr}
+                                    </div>
                                 ))}
 
                                 {Object.keys(drinkAttributes).map((attr) => (
