@@ -27,7 +27,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { Parallax } from "react-parallax";
 import BurgerOverlay from "../../components/BurgerOverlay/BurgerOverlay";
 import NavbarContext from "../../commons/contexts/navbar-context";
-import { ScreenContext } from "../../commons/contexts/screen-context";
+import ScreenContext from "../../commons/contexts/screen-context";
 
 export interface HomePageProps {
     data: {
@@ -55,6 +55,7 @@ export default function HomePage({ data, city }: HomePageProps) {
     });
     const screenMeta = useContext(ScreenContext);
 
+    
     useEffect(() => {
         if (!data) {
             setDataHome(homePageData as HomePageProps);
@@ -63,9 +64,7 @@ export default function HomePage({ data, city }: HomePageProps) {
 
     return (
         <div>
-            {screenMeta.isSmall ? (
-                <BurgerOverlay dropdownItems={navbarProps} />
-            ) : null}
+            <BurgerOverlay dropdownItems={navbarProps} />
             <Head>
                 <title>Koseur | Home</title>
                 <link rel="stylesheet" />
@@ -79,7 +78,7 @@ export default function HomePage({ data, city }: HomePageProps) {
                     <Header barName={"KOSEUR"} dropdownItems={navbarProps} />
                     <div
                         className={styles.BgText}
-                        style={{ textShadow: "15px 10px 10px #000000" }}
+                        style={{ textShadow: "15px 10px 10px #000000", marginTop: "10%" }}
                     >
                         {"KOSEUR TOGETHER"}
                     </div>

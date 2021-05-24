@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import "../styles/globals.css";
-import { IScreenMeta, ScreenContext } from "../commons/contexts/screen-context";
+import ScreenContext, { IScreenMeta} from "../commons/contexts/screen-context";
 import { screenSizes } from "../commons/utils/screen-sizes";
 import NavbarContext, { INavbarMeta } from "../commons/contexts/navbar-context";
 

@@ -10,7 +10,9 @@ export interface IScreenMeta {
     isSmall: boolean;
 }
 
-export const ScreenContext = createContext<IScreenMeta>({
+const ScreenContext = createContext<IScreenMeta>({
     size: {},
     isSmall: false,
 });
+
+export default ScreenContext;

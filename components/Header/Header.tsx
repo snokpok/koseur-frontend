@@ -4,7 +4,7 @@ import styles from "./Header.module.sass";
 import Image from "next/image";
 import Link from "next/link";
 import FadeInImage from "../../components/FadeInImage/FadeInImage";
-import { ScreenContext } from "../../commons/contexts/screen-context";
+import ScreenContext from "../../commons/contexts/screen-context";
 
 export interface HeaderProps extends NavbarProps {
     barName: string;
@@ -16,14 +16,7 @@ export default function Header(props: HeaderProps) {
     return (
         <>
             <div className={styles.Header}>
-                {!screenMeta.isSmall ? (
-                    <div className={styles.BarName}>
-                        <Link href="/">
-                            <a>{props.barName}</a>
-                        </Link>
-                    </div>
-                ) : null}
-
+                
                 <div className={styles.Logo}>
                     <Link href="/speakeasy">
                         <a>

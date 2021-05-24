@@ -8,21 +8,20 @@
     right: 0
     width: 50%
     height: 100vh
-    background-color: black
+    // background-color: rgba(0,0,0,1)
+    background-image: url('/nav-background.jpg')
+    background-position: center
     z-index: 999
     border-left: 1px solid white
+    transition: visibility 0s 0.2s, opacity 1s linear
     &Hide
         @extend .BurgerOverlay
         opacity: 0
         visibility: hidden
+        transition: opacity 0.5s, visibility 0s 0.2s
     &Items
         cursor: pointer
-        margin: 10% auto 10%
-        animation: fade-in 0.3s ease-in-out
+        margin: 10% auto
         @include mixins.flex($jc: center)
-
-@keyframes fade-in 
-    0%
-        opacity: 0
-    100%
-        opacity: 1
+        transition: visibility 0s 0.2s, opacity 1s linear
+        
