@@ -33,7 +33,7 @@ const BurgerOverlay = (props: BurgerOverlayProps) => {
             >
                 <IoIosArrowDroprightCircle />
             </div>
-            {props.dropdownItems.map((item) => (
+            {props.dropdownItems?.map((item) => (
                 <div className={styles.BurgerOverlayItems}>
                     <Link href={item.route}>{item.name}</Link>
                 </div>

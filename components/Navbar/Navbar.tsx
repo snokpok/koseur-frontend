@@ -6,7 +6,7 @@ import { HorizontalNavbar } from "../HorizontalNavbar/HorizontalNavbar";
 
 export interface NavbarProps {
     // dropdownToggleComponent: React.ReactNode;
-    dropdownItems: { name: string; route: string }[];
+    dropdownItems?: { name: string; route: string }[];
 }
 
 export function Navbar({ dropdownItems }: NavbarProps): ReactElement | null {
