@@ -1,0 +1,28 @@
+@use '../../styles/variables.module.sass' as variables
+@use '../../styles/mixins.module.sass' as mixins 
+@use '../Navbar/Navbar.module.sass' as navbar
+
+.BurgerOverlay
+    @include mixins.flex($jc: flex-start)
+    position: fixed
+    right: 0
+    width: 50%
+    height: 100vh
+    background-color: black
+    z-index: 999
+    border-left: 1px solid white
+    &Hide
+        @extend .BurgerOverlay
+        opacity: 0
+        visibility: hidden
+    &Items
+        cursor: pointer
+        margin: 10% auto 10%
+        animation: fade-in 0.3s ease-in-out
+        @include mixins.flex($jc: center)
+
+@keyframes fade-in 
+    0%
+        opacity: 0
+    100%
+        opacity: 1

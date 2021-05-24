@@ -1,15 +1,28 @@
-export const screenSizes = {
-    "ip5-se-w": 320,
-    "ip5-se-h": 560,
-
-    "ip678x-w": 375,
-    "ip678-h": 667,
-    "ipx-h": 812,
-
-    "ip678p-w": 414,
-    "ipad-w": 768,
-    "ipad-h": 1024,
-
-    "ipp-w": 1024,
-    "ipp-h": 1366,
+export type DeviceNames = "ip5se" | "ip678" | "ipx" | "ip678p" | "ipad" | "ipp";
+export type Dimensions = { w: number; h: number };
+export const screenSizes: Record<DeviceNames, Dimensions> = {
+    ip5se: {
+        w: 320,
+        h: 560,
+    },
+    ip678: {
+        w: 375,
+        h: 667,
+    },
+    ip678p: {
+        w: 414,
+        h: 667,
+    },
+    ipx: {
+        w: 375,
+        h: 812,
+    },
+    ipad: {
+        w: 768,
+        h: 1024,
+    },
+    ipp: {
+        w: 1024,
+        h: 1366,
+    },
 };
