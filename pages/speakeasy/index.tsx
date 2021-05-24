@@ -44,41 +44,43 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
 
             <div className={styles.ProfileSectionOther} id="target">
                 <div className={styles.AboutUs}>
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        className={styles.BackgroundVideo}
-                    >
-                        <source src="/21-gam.mp4" type="video/mp4" />
-                    </video>
+                    <div className={styles.AboutUsSection1}>
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            className={styles.BackgroundVideo}
+                        >
+                            <source src="/21-gam.mp4" type="video/mp4" />
+                        </video>
 
-                    <div className={styles.AboutUsTitle}>
-                        <p>{bar.contents.AboutUs.AboutUsTitle[0]}</p>
-                        <p>{bar.contents.AboutUs.AboutUsTitle[1]}</p>
-                        <br />
-                        <div className={styles.AboutUsText}>
-                            <p>{bar.contents.AboutUs.AboutUsText}</p>
-                        </div>
-                    </div>
-
-                    <div className={styles.Drink}>
-                        <Parallax
-                            bgImage="/drink_1.jpg"
-                            strength={350}
-                            blur={{ min: -5, max: 5 }}
-                            style={{
-                                width: "40%",
-                                height: 900,
-                                float: "right",
-                            }}
-                        />
-
-                        <div className={styles.DrinkTitle}>
-                            <p>{bar.contents.Drink.DrinkTitle}</p>
+                        <div className={styles.AboutUsTitle}>
+                            <p>{bar.contents.AboutUs.AboutUsTitle[0]}</p>
+                            <p>{bar.contents.AboutUs.AboutUsTitle[1]}</p>
                             <br />
                             <div className={styles.AboutUsText}>
-                                <p>{bar.contents.Drink.AboutUsText}</p>
+                                <p>{bar.contents.AboutUs.AboutUsText}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.AboutUsSection2}>
+                        <div className={styles.Drink}>
+                            <Parallax
+                                bgImage="/drink_1.jpg"
+                                strength={350}
+                                blur={{ min: -5, max: 5 }}
+                                style={{
+                                    width: "40%",
+                                    height: "65vh",
+                                }}
+                            />
+
+                            <div className={styles.DrinkTitle}>
+                                <p>{bar.contents.Drink.DrinkTitle}</p>
+                                <br />
+                                <div className={styles.AboutUsText}>
+                                    <p>{bar.contents.Drink.AboutUsText}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -14,31 +14,49 @@
 .AboutUs
     width: 90%
     margin: 100px auto
-    .AboutUsTitle
-        width: 900px
-        height: 500px
-        margin-top: 100px
-        text-align: center
-        font-size: 2em
-        float: right
-    .AboutUsText
-        width: 80%
-        margin: 0 auto
-        line-height: 1.7
-        font-size: 1.5rem
-    .BackgroundVideo
-        width: 40%
-        margin-top: 100px
-    .Drink
-        width: 100%
-        background-color: grey
-        margin-top: 400px
-    .DrinkTitle
-        width: 60%
-        margin-top: 200px
-        text-align: center
-        font-size: 2em
-        float: right
+    @include mixins.fluid-type($min-vw: 320px, $max-vw: 1024px, $min-font-size: 10px, $max-font-size: 30px)
+    @include mixins.flex($dir: column, $jc: center, $ai: center)
+    .AboutUsSection1
+        @media only screen and (min-width: variables.$ipp-w) 
+            @include mixins.flex($dir: row, $jc: center, $ai: center)
+        @media only screen and (max-width: variables.$ipp-w - 1px)
+            @include mixins.flex($dir: column, $jc: center, $ai: center)
+        .AboutUsTitle
+            @media only screen and (min-width: variables.$ipp-w) 
+                width: 50%
+                margin-top: 100px
+            @media only screen and (max-width: variables.$ipp-w - 1px)
+                width: 80%
+                margin-top: 30px
+            text-align: center
+        .AboutUsText
+            width: 100%
+            margin: 0 auto
+            line-height: 1.7
+        .BackgroundVideo
+            @media only screen and (min-width: variables.$ipp-w) 
+                width: 40%
+            @media only screen and (max-width: variables.$ipp-w - 1px)
+                width: 80%
+            margin-top: 100px
+
+    .AboutUsSection2
+        margin-top: 20vw
+        .Drink
+            @media only screen and (min-width: variables.$ipp-w) 
+                @include mixins.flex($dir: row-reverse, $jc: center, $ai: center)
+            @media only screen and (max-width: variables.$ipp-w - 1px)
+                @include mixins.flex($dir: column, $jc: center, $ai: center)
+            width: 100%
+            background-color: black
+            .DrinkTitle
+                @media only screen and (min-width: variables.$ipp-w) 
+                    width: 60%
+                    margin-top: 0
+                @media only screen and (max-width: variables.$ipp-w - 1px)
+                    width: 80%
+                    margin-top: 30px
+                text-align: center
 
 .Tag
     width: 60%
