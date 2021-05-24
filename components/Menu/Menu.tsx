@@ -30,22 +30,23 @@ export default function Menu({
                         <Image
                             className={styles.DrinkImg}
                             src={"/drink_2.jpg"}
-                            width={800}
+                            width={600}
                             height={550}
                         />
                         
                         <div className={ styles.DrinkText}>
 
-                            {/* <p className={styles.DrinkName}>{drink?.name}</p>
+                            <p className={styles.DrinkName}>{drink?.name}</p>
 
                             <p className={styles.DrinkDescription}>
                                 A sultry, spicy & smoky mezcal margarita with
                                 TCS signature agave blend - tequila, mezcal &
                                 sotol; grapefruit, hibiscus, warm spices,
                                 tamarind, & chili salt.
-                            </p> */}
+                            </p> 
 
-                            {/* <div className={styles.GridContainer}>
+                            <div className={styles.GridContainer}>
+
                                 {Object.keys(drinkAttributes).map((attr) => (
                                     <>
                                         <div className={styles.GridItem__Title}>
@@ -53,6 +54,7 @@ export default function Menu({
                                         </div>
                                     </>
                                 ))}
+
                                 {Object.keys(drinkAttributes).map((attr) => (
                                     <>
                                         <div className={styles.GridItem}>
@@ -64,7 +66,8 @@ export default function Menu({
                                         </div>
                                     </>
                                 ))}
-                            </div> */}
+                                
+                            </div>
                         </div> 
                     </div>
                 ))}

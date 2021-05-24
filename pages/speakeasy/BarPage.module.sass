@@ -59,13 +59,14 @@
                 text-align: center
 
 .Tag
+    @include mixins.fluid-type($min-vw: variables.$ip5-se-w, $max-vw: variables.$ipp-w, $min-font-size: 14px, $max-font-size: 30px)
     width: 60%
     margin: 0 auto 10%
-    font-size: 2em
     text-align: center
     line-height: 6px
 
 .FooterImg
+    
     transition: all 1s
     opacity: 0.5
     &:hover
