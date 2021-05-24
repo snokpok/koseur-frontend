@@ -9,12 +9,13 @@ export interface NavbarProps {
     dropdownItems: { name: string; route: string }[];
 }
 
-export function Navbar(props: NavbarProps): ReactElement | null {
+export function Navbar({ dropdownItems }: NavbarProps): ReactElement | null {
     const screenMeta = useContext(ScreenContext);
+    if (!dropdownItems || dropdownItems.length == 0) return null;
     const NavbarObject = screenMeta.isSmall ? (
         <BurgerNavbar />
     ) : (
-        <HorizontalNavbar {...props} />
+        <HorizontalNavbar dropdownItems={dropdownItems} />
     );
 
     return NavbarObject;
