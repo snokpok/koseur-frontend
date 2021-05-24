@@ -22,30 +22,30 @@ export default function Menu({
             </div>
             {bar.drinks &&
                 bar.drinks!.map((drink) => (
-                    <div className={styles.DrinkTemplate}>
+                    <div className={
+                        Number.parseInt(drink?.id ?? "0") % 2 == 0
+                            ? styles.DrinkTemplateRight
+                            : styles.DrinkTemplateLeft
+                        }>
                         <Image
                             className={styles.DrinkImg}
                             src={"/drink_2.jpg"}
                             width={800}
                             height={550}
                         />
-                        <div
-                            className={
-                                Number.parseInt(drink?.id ?? "0") % 2 == 0
-                                    ? styles.DrinkTextRight
-                                    : styles.DrinkTextLeft
-                            }
-                        >
-                            <p>{drink?.name}</p>
+                        
+                        <div className={ styles.DrinkText}>
+
+                            {/* <p className={styles.DrinkName}>{drink?.name}</p>
 
                             <p className={styles.DrinkDescription}>
                                 A sultry, spicy & smoky mezcal margarita with
                                 TCS signature agave blend - tequila, mezcal &
                                 sotol; grapefruit, hibiscus, warm spices,
                                 tamarind, & chili salt.
-                            </p>
+                            </p> */}
 
-                            <div className={styles.GridContainer}>
+                            {/* <div className={styles.GridContainer}>
                                 {Object.keys(drinkAttributes).map((attr) => (
                                     <>
                                         <div className={styles.GridItem__Title}>
@@ -64,8 +64,8 @@ export default function Menu({
                                         </div>
                                     </>
                                 ))}
-                            </div>
-                        </div>
+                            </div> */}
+                        </div> 
                     </div>
                 ))}
         </>
