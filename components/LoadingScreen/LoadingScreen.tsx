@@ -15,29 +15,26 @@ export interface LoadingScreenProps {
 }
 
 export function LoadingScreen(): ReactElement | null {
-    const screenMeta = useContext(ScreenContext);
-
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },
     };
 
     const controls = useAnimation();
-    const logoControls = useAnimation();
 
     useEffect(() => {
         setTimeout(() => {
             controls.start({
                 opacity: 0,
             });
-        }, MAXIMUM_LOADING_TIME - 500);
+        }, MAXIMUM_LOADING_TIME - OPACITY_PREFIRE);
     });
 
     return (
         <motion.div className={styles.LoadingScreen} animate={controls}>
             <motion.div initial="hidden" animate="visible" variants={variants}>
                 <Image
-                    src="/koseur_logo.jpg"
+                    src="/logo.jpg"
                     width={LOGO_SPLASH_WH}
                     height={LOGO_SPLASH_WH}
                 />
