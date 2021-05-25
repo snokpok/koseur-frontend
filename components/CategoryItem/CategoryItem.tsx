@@ -37,7 +37,10 @@ export default function CategoryItem({
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
-            onClick={() => router.push("/speakeasy")}
+            onClick={(e) => {
+                e.preventDefault();
+                router.push("/speakeasy");
+            }}
         >
             <div className={styles.CategoryItem}>
                 {showDescription ? (

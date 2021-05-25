@@ -1,0 +1,9 @@
+.content
+  opacity: 1
+  transition: 1s
+
+.fadeIn 
+  opacity: 1
+
+.fadeOut
+  opacity: 0.5

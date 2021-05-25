@@ -1,0 +1,17 @@
+@use '../../styles/mixins.module.sass' as mixins
+
+.LoadingScreen
+    @include mixins.flex()
+    @include mixins.fullWidthHeight()
+    background-color: black
+    position: fixed
+    height: 100vh
+    z-index: 9
+    &Logo
+      opacity: 0
+    &Items
+        cursor: pointer
+        margin: 10% auto
+        @include mixins.flex($jc: center)
+        transition: visibility 0s 0.2s, opacity 1s linear
+          

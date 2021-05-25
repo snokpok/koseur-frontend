@@ -28,6 +28,7 @@ import { Parallax } from "react-parallax";
 import BurgerOverlay from "../components/BurgerOverlay/BurgerOverlay";
 import NavbarContext from "../commons/contexts/navbar-context";
 import ScreenContext from "../commons/contexts/screen-context";
+import { LoadingScreen } from "../components/LoadingScreen/LoadingScreen";
 
 export interface HomePageProps {
     data: {
@@ -53,9 +54,7 @@ export default function HomePage({ data, city }: HomePageProps) {
     const [dataHome, setDataHome] = useState<HomePageProps>({
         data: { categories: [] },
     });
-    const screenMeta = useContext(ScreenContext);
 
-    
     useEffect(() => {
         if (!data) {
             setDataHome(homePageData as HomePageProps);
@@ -78,7 +77,10 @@ export default function HomePage({ data, city }: HomePageProps) {
                     <Header barName={"KOSEUR"} dropdownItems={navbarProps} />
                     <div
                         className={styles.BgText}
-                        style={{ textShadow: "15px 10px 10px #000000", marginTop: "10%" }}
+                        style={{
+                            textShadow: "15px 10px 10px #000000",
+                            marginTop: "10%",
+                        }}
                     >
                         {"KOSEUR TOGETHER"}
                     </div>
