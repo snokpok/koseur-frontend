@@ -1,14 +1,6 @@
 import Link from "next/link";
-import React, {
-    Component,
-    useContext,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import React, { useContext } from "react";
 import styles from "./BurgerOverlay.module.sass";
-import { reveal as Menu } from "react-burger-menu";
-import { burgerMenuStyles } from "./menu-styles";
 import { NavbarProps } from "../Navbar/Navbar";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import NavbarContext from "../../commons/contexts/navbar-context";
@@ -27,7 +19,7 @@ const BurgerOverlay = (props: BurgerOverlayProps) => {
                     ? styles.BurgerOverlay
                     : styles.BurgerOverlayHide
             }
-            style={{width: !screenMeta.isSmall ? '20%' : '50%'}}
+            style={{ width: !screenMeta.isSmall ? "20%" : "50%" }}
         >
             <div
                 className={styles.BurgerOverlayItems}

@@ -12,8 +12,6 @@ import styles from "/styles/styles.module.sass";
 import Head from "next/head";
 import FadeInImage from "../components/FadeInImage/FadeInImage";
 import { homePageData } from "../commons/mock-data/home-page";
-import { homePageHanoiData } from "../commons/mock-data/home-page-hanoi";
-import { homePageHCMData } from "../commons/mock-data/home-page-hcm";
 import CategorySection from "../components/CategorySection/CategorySection";
 import { GetServerSideProps, NextPageContext } from "next";
 import { getBarsHomePageQueryVariables } from "../commons/graphql/qvs";
@@ -50,7 +48,7 @@ export const navbarProps = [
     },
 ];
 
-export default function HomePage({ data, city }: HomePageProps) {
+export default function HomePage({ data }: HomePageProps) {
     const [dataHome, setDataHome] = useState<HomePageProps>({
         data: { categories: [] },
     });
@@ -102,21 +100,18 @@ export default function HomePage({ data, city }: HomePageProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    //    try {
-    //        const res = await AxiosGenericQueryFunction(
-    //            getBarsHomePageQueryVariables("id", {
-    //                city: ctx.query.city,
-    //            })
-    //        );
-    //        return {
-    //            props: {
-    //                data: res.data,
-    //                city: ctx.query?.city,
-    //            },
-    //        };
-    //    } catch {
-    return {
-        props: { data: null, city: ctx.params?.city ?? null },
-    };
+    try {
+        const res = await AxiosGenericQueryFunction(
+            getBarsHomePageQueryVariables("id")
+        );
+        return {
+            props: {
+                data: res.data.data,
+            },
+        };
+    } catch {
+        return {
+            props: { data: null, city: ctx.params?.city ?? null },
+        };
+    }
 };
-//};

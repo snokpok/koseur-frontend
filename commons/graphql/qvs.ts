@@ -1,30 +1,27 @@
-export const getBarsHomePageQueryVariables = (sort: string, where: object) => (
-  {
+export const getBarsHomePageQueryVariables = (sort: string) => ({
     query: `
-    query($sort: String, $where: JSON) {
-      categories(sort: $sort) {
-        name
-        description
-        bars(where: $where) {
-          name
-          logo {
-            formats
-          }
-          description
-          images {
-            formats
-            alternativeText
-            size
-          }
-        }
+query($sort: String) {
+  categories(sort: $sort) {
+    name
+    description
+    bars {
+      name
+      logo {
+        formats
       }
-    }`,
-    variables: {
-      sort,
-      where
+      description
+      images {
+        formats
+        alternativeText
+        size
+      }
     }
   }
-)
+}`,
+    variables: {
+        sort,
+    },
+});
 
 export const getBarById = (id: number) => ({
     query: `
