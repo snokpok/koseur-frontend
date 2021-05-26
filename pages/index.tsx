@@ -27,6 +27,7 @@ import BurgerOverlay from "../components/BurgerOverlay/BurgerOverlay";
 import NavbarContext from "../commons/contexts/navbar-context";
 import ScreenContext from "../commons/contexts/screen-context";
 import { LoadingScreen } from "../components/LoadingScreen/LoadingScreen";
+import Footer from "../components/Footer/Footer";
 
 export interface HomePageProps {
     data: {
@@ -95,6 +96,8 @@ export default function HomePage({ data }: HomePageProps) {
                     categories={data?.categories ?? dataHome.data.categories}
                 />
             </section>
+
+            <Footer />
         </div>
     );
 }
