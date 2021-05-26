@@ -34,7 +34,7 @@ export function LoadingScreen(): ReactElement | null {
         <motion.div className={styles.LoadingScreen} animate={controls}>
             <motion.div initial="hidden" animate="visible" variants={variants}>
                 <Image
-                    src="/logo.jpg"
+                    src="/logo.png"
                     width={LOGO_SPLASH_WH}
                     height={LOGO_SPLASH_WH}
                 />

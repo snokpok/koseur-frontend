@@ -124,7 +124,12 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                     ))}
                 </Carousel>
             </div>
-            <Footer />
+            <Footer
+                logoLink={"/21gam-logo.jpg"}
+                address="26 Truong Han Sieu, Tran Hung Dao, Hoan Kiem, Ha Noi"
+                addressLink="https://www.google.com/maps/place/21Gam/@21.0200633,105.846649,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ab391c803bb3:0xa46cb5a3e8f7e5e4!8m2!3d21.0200583!4d105.8488377"
+                phoneNo="+84988111121"
+            />
         </div>
     );
 }

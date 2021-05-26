@@ -28,6 +28,7 @@ import NavbarContext from "../commons/contexts/navbar-context";
 import ScreenContext from "../commons/contexts/screen-context";
 import { LoadingScreen } from "../components/LoadingScreen/LoadingScreen";
 import Footer from "../components/Footer/Footer";
+import { FooterHomepage } from "../components/FooterHomepage/FooterHomepage";
 
 export interface HomePageProps {
     data: {
@@ -96,8 +97,7 @@ export default function HomePage({ data }: HomePageProps) {
                     categories={data?.categories ?? dataHome.data.categories}
                 />
             </section>
-
-            <Footer />
+            <FooterHomepage />
         </div>
     );
 }
