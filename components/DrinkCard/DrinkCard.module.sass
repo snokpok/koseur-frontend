@@ -1,0 +1,80 @@
+@use '../../styles/mixins.module' as mixins
+@use '../../styles/variables.module.sass' as variables
+
+.DrinkTemplateLeft
+    @media only screen and (min-width: variables.$ipp-w) 
+        @include mixins.flex($dir: row-reverse, $jc: space-between, $ai: center)
+    @media only screen and (max-width: variables.$ipp-w - 1px)
+        @include mixins.flex($dir: column, $jc: center, $ai: center)
+    width: 90%
+    min-height: 60vh
+    margin: 7% auto
+    border: 1px solid white
+    word-wrap: break-word
+    &:hover
+        .DrinkDescription
+            opacity: 1
+            transition: all 0.8s
+        .GridContainer
+            transition: all 1s
+            opacity: 0
+        .DrinkImg
+            transition: all 1s
+            transform: scale(1.2)
+    .DrinkImg
+        transition: all 1s
+    .DrinkName
+        font-size: 2.5rem
+        @media only screen and (max-width: variables.$ipp-w - 1px)
+            font-size: 2rem
+    .DrinkText
+        @include mixins.drinkAlternating(left)
+        @include mixins.flex($dir: column, $ai: center)
+        @include mixins.fluid-type($min-vw: variables.$ip5-se-w, $max-vw: variables.$ipp-w, $min-font-size: 14px, $max-font-size: 30px)
+        max-width: 90%
+        margin-left: 5%
+        @media only screen and (max-width: variables.$ipp-w - 1px)
+            margin-left: 0
+        margin-top: 0
+        .GridContainer
+            @include mixins.fluid-type($min-vw: variables.$ip5-se-w, $max-vw: variables.$ipp-w, $min-font-size: 10px, $max-font-size: 26px)
+            width: 100%
+            transition: all 1s
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+            align-items: center
+            max-width: 100%
+            @media only screen and (max-width: variables.$ipp-w - 1px)
+                padding-bottom: 10vw
+                padding-top: 2vw
+            .GridItem
+                @include mixins.fluid-type($min-vw: variables.$ip5-se-w, $max-vw: variables.$ipp-w, $min-font-size: 18px, $max-font-size: 25px)
+                padding-top: 1.5vw
+                text-align: center
+                color: variables.$koseur-gold
+                &__Title
+                    @extend .GridItem
+                    color: white
+    .DrinkDescription
+            @media only screen and (max-width: variables.$ipp-w - 1px)
+                font-size: 1rem
+            @include mixins.fluid-type($min-vw: variables.$ip5-se-w, $max-vw: variables.$ipp-w, $min-font-size: 10px, $max-font-size: 20px)
+            padding: 2% 0 2%
+            width: 95%
+            transition: all 0.8s
+            margin: auto
+            opacity: 0
+
+.DrinkTemplateRight
+    @extend .DrinkTemplateLeft
+    @media only screen and (min-width: variables.$ipp-w) 
+        @include mixins.flex($dir: row, $jc: space-between, $ai: center)
+    @media only screen and (max-width: variables.$ipp-w - 1px)
+        @include mixins.flex($dir: column, $jc: center, $ai: center)
+    .DrinkText
+        @include mixins.drinkAlternating(right)
+        margin-right: 5%
+        @media only screen and (max-width: variables.$ipp-w - 1px)
+            margin-right: 0
+        margin-top: 0
+

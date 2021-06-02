@@ -88,14 +88,7 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
             </div>
 
             <div className={styles.ProfileSectionOther}>
-                <Menu
-                    bar={bar}
-                    drinkAttributes={{
-                        Base: "Gin",
-                        Type: "Summer",
-                        Strength: "15%",
-                    }}
-                />
+                <Menu bar={bar} />
 
                 <div className={styles.Tag}>
                     <p>Tag Along</p>
