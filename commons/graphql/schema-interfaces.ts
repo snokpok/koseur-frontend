@@ -386,6 +386,7 @@ export type Drink = {
     ingredients?: Maybe<Scalars["JSON"]>;
     published_at?: Maybe<Scalars["DateTime"]>;
     images?: Maybe<Array<Maybe<UploadFile>>>;
+    characteristics: {Base:string, Type:string, Strength:string}
 };
 
 export type DrinkImagesArgs = {

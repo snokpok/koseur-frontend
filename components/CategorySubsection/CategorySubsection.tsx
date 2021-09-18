@@ -39,7 +39,6 @@ export default function CategorySubsection(props: CategorySubsectionProps) {
     return (
         <div className={styles.CategorySubsection}>
             <div className={styles.Header}>{props.category.name}</div>
-
             <Carousel
                 disableEdgeSwiping={true}
                 slidesToShow={numSlides}
@@ -67,6 +66,7 @@ export default function CategorySubsection(props: CategorySubsectionProps) {
                     />
                 ))}
             </Carousel>
+            <div className={styles.breakLine}/>
         </div>
     );
 }

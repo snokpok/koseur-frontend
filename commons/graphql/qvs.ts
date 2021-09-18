@@ -5,6 +5,7 @@ query($sort: String) {
     name
     description
     bars {
+      id
       name
       logo {
         formats
@@ -38,6 +39,7 @@ export const getBarById = (id: number) => ({
           id
           name
           ingredients
+          characteristics
           images {
             formats
           }

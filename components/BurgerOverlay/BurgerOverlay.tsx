@@ -8,6 +8,25 @@ import ScreenContext from "../../commons/contexts/screen-context";
 
 export interface BurgerOverlayProps extends NavbarProps {}
 
+export const navbarProps = [
+    {
+        name: "Home",
+        route: "/",
+    },
+    {
+        name: "About us",
+        route: "/",
+    },
+    {
+        name: "Hanoi",
+        route: "/#category-section",
+    },
+    {
+        name: "Sai Gon",
+        route: "/#category-section",
+    },
+];
+
 const BurgerOverlay = (props: BurgerOverlayProps) => {
     const navbarMeta = useContext(NavbarContext);
     const screenMeta = useContext(ScreenContext);
@@ -28,7 +47,7 @@ const BurgerOverlay = (props: BurgerOverlayProps) => {
             >
                 <IoIosArrowDroprightCircle />
             </div>
-            {props.dropdownItems?.map((item) => (
+            {(props.dropdownItems == null ? navbarProps : props.dropdownItems).map((item) => (
                 <div className={styles.BurgerOverlayItems}>
                     <Link href={item.route}>{item.name}</Link>
                 </div>

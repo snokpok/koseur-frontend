@@ -11,11 +11,10 @@ module.exports = (phase, { defaultConfig }) => {
                     ? "http://localhost:1337/graphql"
                     : "",
             KAPI_2:
-                phase == PHASE_DEVELOPMENT_SERVER
-                    ? "http://localhost:1337"
-                    : "",
+                "http://localhost:1337"
         },
         images: {
+            domains: ['localhost'],
             deviceSizes: [1200, 1920, 2048, 3840],
             imageSizes: [16, 32, 48, 64, 320, 375, 414, 768, 1024],
         }

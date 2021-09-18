@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { Drink, Maybe } from "../../commons/graphql/schema-interfaces";
 import styles from "./DrinkCard.module.sass";
 import Image from "next/image";
+import { imagePath, imagePathServer, imagePathDrink} from "../../commons/utils/image-path.function";
 
 export type PossibleAttributes = "Base" | "Type" | "Strength";
 
@@ -24,9 +25,9 @@ export function DrinkCard({
         >
             <Image
                 className={styles.DrinkImg}
-                src={"/drink_2.jpg"}
-                width={600}
-                height={550}
+                src={imagePathDrink(drink as Drink, "small")}
+                width={500}
+                height={650}
             />
 
             <div className={styles.DrinkText}>

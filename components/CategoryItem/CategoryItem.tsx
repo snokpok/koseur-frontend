@@ -4,13 +4,27 @@ import Image from "next/image";
 import { ImageLoaderFunction } from "../../commons/utils/image-loader.function";
 import { Bar } from "../../commons/graphql/schema-interfaces";
 import FadeInImage from "../FadeInImage/FadeInImage";
-import { imagePath } from "../../commons/utils/image-path.function";
+import { imagePath, imagePathServer } from "../../commons/utils/image-path.function";
 import { useRouter } from "next/router";
 
 export interface CategoryItemProps {
     bar: Bar;
     showDescription: boolean;
 }
+
+export interface NavbarProps {
+    dropdownItems: { name: string; route: string }[];
+}
+export const navbarProps = [
+    {
+        name: "Home",
+        route: "/",
+    },
+    {
+        name: "About us",
+        route: "/about",
+    },
+];
 
 export default function CategoryItem({
     bar,
@@ -33,13 +47,13 @@ export default function CategoryItem({
             className={styles.BarCover}
             style={{
                 width: "100%",
-                backgroundImage: `url(${imagePath(bar, "small")})`,
+                backgroundImage: `url(${imagePathServer(bar, "small")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
             onClick={(e) => {
                 e.preventDefault();
-                router.push("/speakeasy");
+                router.push(`/${bar.id}`);
             }}
         >
             <div className={styles.CategoryItem}>

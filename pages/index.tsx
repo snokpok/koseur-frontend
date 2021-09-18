@@ -42,11 +42,19 @@ export interface NavbarProps {
 export const navbarProps = [
     {
         name: "Home",
-        route: "/home",
+        route: "/",
     },
     {
         name: "About us",
-        route: "/about",
+        route: "/",
+    },
+    {
+        name: "Hanoi",
+        route: "/#category-section",
+    },
+    {
+        name: "Sai Gon",
+        route: "/#category-section",
     },
 ];
 

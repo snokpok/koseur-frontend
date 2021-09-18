@@ -19,11 +19,7 @@ export default function Menu({ bar }: MenuProps): ReactElement | null {
                 bar.drinks!.map((drink) => (
                     <DrinkCard
                         drink={drink}
-                        drinkAttributes={{
-                            Base: "Gin",
-                            Type: "Summer",
-                            Strength: "15%",
-                        }}
+                        drinkAttributes={drink!.characteristics}
                         imageLeft={Number.parseInt(drink?.id ?? "0") % 2 == 0}
                     />
                 ))}
