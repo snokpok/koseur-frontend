@@ -15,7 +15,7 @@ export default function Menu({ bar }: MenuProps): ReactElement | null {
                 <p>THE GOODS</p>
                 <Image src="/decor.png" width={900} height={50} />
             </div>
-            {bar.drinks &&
+            {bar?.drinks &&
                 bar.drinks!.map((drink) => (
                     <DrinkCard
                         drink={drink}

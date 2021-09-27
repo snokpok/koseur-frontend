@@ -2,7 +2,11 @@ import React, { ReactElement } from "react";
 import { Drink, Maybe } from "../../commons/graphql/schema-interfaces";
 import styles from "./DrinkCard.module.sass";
 import Image from "next/image";
-import { imagePath, imagePathServer, imagePathDrink} from "../../commons/utils/image-path.function";
+import {
+    imagePath,
+    imagePathServer,
+    imagePathDrink,
+} from "../../commons/utils/image-path.function";
 
 export type PossibleAttributes = "Base" | "Type" | "Strength";
 
@@ -17,18 +21,22 @@ export function DrinkCard({
     drinkAttributes,
     imageLeft = false,
 }: DrinkCardProps): ReactElement | null {
+    const imagePath = imagePathDrink(drink as Drink, "small");
+
     return (
         <div
             className={
                 imageLeft ? styles.DrinkTemplateLeft : styles.DrinkTemplateRight
             }
         >
-            <Image
-                className={styles.DrinkImg}
-                src={imagePathDrink(drink as Drink, "small")}
-                width={500}
-                height={650}
-            />
+            {imagePath && (
+                <Image
+                    className={styles.DrinkImg}
+                    src={imagePath}
+                    width={400}
+                    height={400}
+                />
+            )}
 
             <div className={styles.DrinkText}>
                 <div className={styles.DrinkName}>{drink?.name}</div>
@@ -40,17 +48,23 @@ export function DrinkCard({
                 </div>
 
                 <div className={styles.GridContainer}>
-                    {Object.keys(drinkAttributes).map((attr) => (
-                        <div className={styles.GridItem__Title}>{attr}</div>
-                    ))}
+                    {drinkAttributes &&
+                        Object.keys(drinkAttributes).map((attr) => (
+                            <div className={styles.GridItem__Title}>{attr}</div>
+                        ))}
 
-                    {Object.keys(drinkAttributes).map((attr) => (
-                        <>
-                            <div className={styles.GridItem}>
-                                {drinkAttributes[attr as PossibleAttributes]}
-                            </div>
-                        </>
-                    ))}
+                    {drinkAttributes &&
+                        Object.keys(drinkAttributes).map((attr) => (
+                            <>
+                                <div className={styles.GridItem}>
+                                    {
+                                        drinkAttributes[
+                                            attr as PossibleAttributes
+                                        ]
+                                    }
+                                </div>
+                            </>
+                        ))}
                 </div>
             </div>
         </div>

@@ -40,9 +40,8 @@ export const navbarProps = [
 
 export default function BarPage({ data: { bar } }: BarPageProps) {
     return (
-        
         <div className={styles.ProfileContainer} id="FrontPage">
-            <BurgerOverlay/>
+            <BurgerOverlay />
             <Parallax
                 bgImage={`${imagePath(bar, 2)}`}
                 strength={300}
@@ -50,7 +49,9 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
             >
                 <div className={styles.ProfileSection}>
                     <Header barName={"KOSEUR"} dropdownItems={navbarProps} />
-                    <p className={styles.BgText}>{bar.contents?.BgText ?? null}</p>
+                    <p className={styles.BgText}>
+                        {bar?.contents?.BgText ?? null}
+                    </p>
 
                     <div className={styles.ArrowIconContainer}>
                         <AnchorLink href="#target">
@@ -73,11 +74,11 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                         </video>
 
                         <div className={styles.AboutUsTitle}>
-                            <p>{bar.contents.AboutUs.AboutUsTitle[0]}</p>
-                            <p>{bar.contents.AboutUs.AboutUsTitle[1]}</p>
+                            <p>{bar?.contents?.AboutUs.AboutUsTitle[0]}</p>
+                            <p>{bar?.contents?.AboutUs.AboutUsTitle[1]}</p>
                             <br />
                             <div className={styles.AboutUsText}>
-                                <p>{bar.contents.AboutUs.AboutUsText}</p>
+                                <p>{bar?.contents?.AboutUs.AboutUsText}</p>
                             </div>
                         </div>
                     </div>
@@ -94,10 +95,10 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
                             />
 
                             <div className={styles.DrinkTitle}>
-                                <p>{bar.contents.Drink.DrinkTitle}</p>
+                                <p>{bar?.contents.Drink.DrinkTitle}</p>
                                 <br />
                                 <div className={styles.AboutUsText}>
-                                    <p>{bar.contents.Drink.AboutUsText}</p>
+                                    <p>{bar?.contents.Drink.AboutUsText}</p>
                                 </div>
                             </div>
                         </div>
@@ -146,9 +147,11 @@ export default function BarPage({ data: { bar } }: BarPageProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const barID = context.params!.barID ?? null
+    const barID = context.params!.barID ?? null;
     try {
-        const res = await AxiosGenericQueryFunction(getBarById(Number.parseInt(barID as string, 10)));
+        const res = await AxiosGenericQueryFunction(
+            getBarById(Number.parseInt(barID as string, 10))
+        );
         return {
             props: res.data,
         };
